@@ -1,0 +1,3769 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>L'Ispettore Generale</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 700px; margin: auto; }
+    select, button { margin-top: 1rem; font-size: 1rem; }
+    .battuta { margin: 1rem 0; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>L'Ispettore Generale</h1>
+
+  <label for="personaggio">Scegli un personaggio:</label>
+  <select id="personaggio">
+	<option value="SINDACO">Sindaco</option>
+	<option value="ANNA">Anna</option>
+	<option value="MARIA">Maria</option>
+	<option value="SOVRINTENDENTE">Felipa Delgado</option>
+	<option value="GIUDICE">Edward Chapkin</option>
+	<option value="ISPETTORE SCOLASTICO">Lukasz Meyer</option>
+	<option value="UFFICIALE POSTALE">Jean Dupont</option>
+	<option value="BOBÈINSKIJ">Petr Bobèinskij</option>
+	<option value="SVEN">Sven</option>
+	<option value="CHLESTAKOV">Chlestakov</option>
+	<option value="OSIP">Osip</option>
+  </select>
+  
+  <br/><br/>
+	<label>Vuoi silenziare le battute del tuo personaggio?</label><br/>
+	<input type="radio" id="si" name="silenzia" value="Si" checked="checked">
+	<label for="si">Sì</label><br>
+	<input type="radio" id="no" name="silenzia" value="No">
+	<label for="no">No</label><br>
+
+  <div id="battute"></div>
+  <div id="copione" style="display:none;">[
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Signori, ho una notizia estremamente spiacevole. Sta per arrivare un ispettore."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Come un ispettore?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Che ispettore?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Un ispettore dalla Capitale. In incognito. E per di pi\u00F9 in missione segreta."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Senti un po\u0027!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Come se non avessimo abbastanza grattacapi!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Dio mio! E per di pi\u00F9 in missione segreta!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Eppure io me lo sentivo. Per tutta la notte ho sognato due orribili topi. Mai visto niente di simile: neri e di una grandezza spropositata! Arrivavano, fiutavano un po\u0027 qua e un po\u0027 l\u00E0, e se ne andavano. Meglio che vi legga la lettera che ho ricevuto da un funzionario della Capitale. Allora: \u00ABCaro amico, compare e benefattore\u00BB Ecco: \u00ABMi affretto tra l\u0027altro a comunicarti che \u00E8 arrivato un funzionario con l\u0027ordine di ispezionare tutta la provincia e soprattutto il nostro distretto. L\u0027ho saputo da persone assolutamente degne di fede, anche se la visita \u00E8 in forma privata. Dato che so che anche tu, come tutti, hai i tuoi peccatucci, e visto che sei una persona intelligente e non ami lasciarti sfuggire le occasioni favorev...\u00BB. Beh, queste sono cose nostre... \u00ABti consiglio di prendere le precauzioni del caso, perch\u00E9 pu\u00F2 arrivare da un momento all\u0027altro, ammesso che non sia gi\u00E0 arrivato l\u00EC, in mezzo a voi, in incognito. Ieri...\u00BB. Beh, qui passa agli affari di famiglia: \u00ABAnna \u00E8 venuta a trovarci con suo marito: Ivan \u00E8 molto ingrassato...\u00BB, eccetera eccetera. Ecco dunque in che razza di situazione ci troviamo."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Una situazione davvero... straordinaria - semplicemente straordinaria. Non pu\u00F2 essere frutto del caso."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Ma perch\u00E9, Sindaco? Per quale motivo? Cosa gli salta in mente di mandarci un ispettore?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Perch\u00E9! \u00C8 il destino, ecco perch\u00E9! Finora, ringraziando Dio, avevano preso di mira altre citt\u00E0. Adesso, \u00E8 venuto il turno della nostra."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "No, no, caro Sindaco, io credo che esista un motivo pi\u00F9 sottile, di ordine politico. Ecco che cosa vuol dire questa visita, seguimi: questa nostra Patria... ecco, proprio cos\u00EC... vuole fare una guerra, e il ministero, come vedete, manda in giro i suoi funzionari a controllare che qua e l\u00E0 non ci siano dei traditori."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma guarda questo cosa t\u0027inventa! E pensare che siete un uomo intelligente. Un tradimento in una citt\u00E0 di provincia! Di qui non arrivi a un confine nemmeno a cavalcare per tre anni di fila!"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "No, no, insisto, voi non capite.. Non... Il governo \u00E8 pi\u00F9 furbo di quanto voi crediate: per quanto lontani possiamo essere, lui non ci perde mai di vista."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Lontani o no, signori, io vi ho avvisati. State bene attenti! Per quanto mi riguarda ho preso le mie contromisure, e vi consiglio di fare la stessa cosa. Lo dico soprattutto a voi, Felipa Delgado. Sono sicuro, caro signor Sovrintendente alle Opere Pie, che quando arriver\u00E0 questo funzionario, per prima cosa vorr\u00E0 fare una visitina proprio a voi: \u00E8 opportuno che voi provvediate a che tutto sia in ordine. Che le cuffie siano pulite, per esempio e che i malati non vadano in giro luridi come dei fabbri."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Nessun problema. Le cuffie possono benissimo essere pulite, asciugate, stirate."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E scrivete ai piedi di ogni letto, in latino o in qualche altra lingua di che malattia si tratta, in quale data, giorno e mese, si \u00E8 ammalato il degente... E poi non sta bene che i vostri malati fumino tabacco cos\u00EC forte: come si mette piede l\u00EC dentro si comincia a tossire. Infine, gi\u00E0 che ci siamo, sarebbe meglio che fossero anche un po\u0027 meno: se ce ne sono troppi penseranno subito che sia colpa della scarsa supervisione o a trattamenti medici incompetenti."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Sul modo di curare i malati, ho adottato un principio infallibile: assecondare il pi\u00F9 possibile il corso della natura. Perch\u00E9 usare tutti quei farmaci che costano un occhio della testa? L\u0027uomo \u00E8 un essere semplice: se deve morire, muore lo stesso; se deve riprendersi, si riprende."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Per quanto riguarda voi, Edward Chapkin, vi consiglierei di controllare un po\u0027 meglio lo stato degli uffici pubblici. Nell\u0027anticamera dove di solito i cittadini fanno la fila, i custodi tengono le oche e le galline che immancabilmente vanno a intrufolarsi tra le gambe della gente. Dedicarsi all\u2019allevamento \u00E8 certamente encomiabile, e non vedo perch\u00E9 dovrei proibirlo... Ma \u00E8 la scelta del luogo che \u00E8 inopportuna... Gi\u00E0 da tempo avevo intenzione di dirvelo, ma me lo sono sempre dimenticato."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Dar\u00F2 oggi stesso l\u0027ordine di consegnarle tutte in cucina. Se volete, potete venire a pranzo da noi."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Inoltre non sta affatto bene che in un ufficio pubblico si stenda ad asciugare ogni sorta di stracci, e che proprio da sopra l\u0027archivio spuntino fucile e frustino da caccia. So che siete un appassionato di caccia, ma \u00E8 pi\u00F9 prudente che per qualche giorno li nascondiate: quando l\u2019ispettore se ne sar\u00E0 andato, li potrete riappendere. Il vostro segretario, poi... intendiamoci, una persona preparata, non lo discuto nemmeno, ma puzza che sembra appena uscito da una distilleria. Non fa una buona impressione."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "No, non ci si pu\u00F2 fare niente: dice che quando era piccolo la sua balia gli ha dato una botta e da allora emette questo lieve odore."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Va bene, volevo solo farvelo notare. Riguardo quelli che nella lettera chiamano \u00ABpeccatucci\u00BB, non so che cosa dirvi. Trovo addirittura bizzarro che stiamo qui a parlarne. Non c\u0027\u00E8 uomo al mondo che non si sia macchiato di qualche peccato. \u00C8 Dio stesso che ha disposto cos\u00EC: cosa, questa, che i volterriani cercano - invano - di negare."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Cosa intendete, Sindaco, per \u00ABpeccatucci\u00BB? C\u0027\u00E8 peccatuccio e peccatuccio. Io ho sempre detto apertamente che prendo le bustarelle, ma che bustarelle? Qualche cucciolo di levriero. \u00C8 tutt\u0027altra cosa."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Beh, cuccioli o altro, sempre bustarelle sono."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Direi di no. \u00C8 diverso se, per esempio, uno ha una pelliccia da cinquecento marchi, e intanto sua moglie va in giro con lo scialle."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Beh, e cosa cambia se le vostre bustarelle sono solo cuccioli di levriero? Voi non credete in Dio, e non andate mai in chiesa. Io, se non altro, ho una fede ben salda e vado in chiesa tutte le domeniche. Voi, invece... Vi conosco, sapete: se cominciaste a parlare della creazione del mondo ci fareste rizzare i capelli in testa."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Per\u00F2 sono conclusioni a cui sono arrivato da solo, con la mia propria testa."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "In certi casi aver molta testa \u00E8 ancora peggio che non averne per niente. Comunque francamente non credo che qualcuno verr\u00E0 mai a ficcare il naso da voi: \u00E8 un posto cos\u00EC invidiabile che per proteggerlo s\u0027invoca Dio in persona. Voi, piuttosto, Lukasz Meyer, che siete il provveditore scolastico, dovrete provvedere a che gli insegnanti agiscano come si deve. Si tratta di persone istruite, non dico di no, ma a volte si comportano in modo strano, in modo poco compatibile con la dignit\u00E0 di docente. Ce n\u0027\u00E8 uno, per esempio, quello con la faccia grossa... che non pu\u00F2 fare a meno, una volta salito in cattedra, di fare una smorfia. Cos\u00EC.  Poi con la mano comincia, da sotto la cravatta, a lisciarsi la barba. Ovvio, se quella smorfia la fa a un allievo, niente da dire, pu\u00F2 darsi addirittura che faccia bene, non sono in grado di giudicare, ma pensate un po\u0027 se la fa alla presenza di questo nostro visitatore: pensate che danno potrebbe uscirne. Il signor ispettore generale o chi per lui potrebbe pensare che \u00E8 indirizzata a lui stesso, e allora addio..."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "E io che ci posso fare? Gliel\u0027ho gi\u00E0 detto pi\u00F9 di una volta. Anche pochi giorni fa, quando \u00E8 entrato in classe il nostro maresciallo, gli ha fatto una di quelle facce come non ne avevo mai viste. L\u0027ha fatta senza intenzioni malevole, ma poi ad essere redarguito sono stato io: perch\u00E9 in questo modo, dice, inculchiamo nei giovani idee da liberi pensatori."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Devo segnalarvi anche il docente di storia. Un vero pozzo di scienza, sa un sacco di cose, ma quando spiega si infervora talmente da perdere il controllo di s\u00E9. Una volta sono stato ad ascoltarlo: finch\u00E9 ha parlato degli Assiri e dei Babilonesi, niente da ridire, ma quando \u00E8 arrivato a Alessandro Magno... non ho parole. Chiss\u00E0 cosa gli \u00E8 preso. Credevo che fosse scoppiato un incendio. Dio mio! \u00C8 volato gi\u00F9 dalla cattedra, ha preso una sedia e con tutte le sue forze l\u0027ha sbattuta sul pavimento. Per carit\u00E0, Alessandro Magno \u00E8 stato un grande eroe, ma perch\u00E9 spaccare le sedie? In questo modo si danneggia l\u0027erario, e basta."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "S\u00EC, \u00E8 focoso; l\u0027ho redarguito pi\u00F9 di una volta... E sapete cosa mi ha risposto? Mi ha risposto: come volete, ma per la scienza darei anche la vita."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Capisco. \u00C8 un\u0027inspiegabile legge del destino: quando uno \u00E8 intelligente, o \u00E8 un ubriacone o ha una tale faccia da schiaffi da far uscire dai gangheri anche un santo."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Dio vi scampi dall\u0027avere a che fare col settore scientifico: c\u0027\u00E8 da aver paura di tutto. Tutti che si intromettono, tutti che vogliono far vedere di essere anche loro intelligenti."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Questo sarebbe ancora niente, se non ci si mettesse questo bastardo d\u0027un ispettore! Spunter\u00E0 all\u0027improvviso: \u201Cah, eccovi qua, piccioncini! E chi \u00E8 il giudice, qui? Edward Chapkin. Chiamatemi Edward Chapkin! E chi \u00E8 la sovrintendente alle opere pie? Felipa Delgado. Chiamatemi Felipa Delgado!\u201D. Ecco il peggio."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Ditemi, signori: chi \u00E8 questo funzionario che sta per arrivare?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah gi\u00E0 ne avete ancora sentito parlare, Jean Dupont?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Mi ha avvisato P\u00EBtr Bob\u00E8inskij. \u00C8 appena passato da me all\u0027ufficio postale."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E allora, come vi sentite, Jean Dupont?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Cosa c\u0027entro io? Piuttosto come vi sentite voi, Sindaco?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Perch\u00E9, forse c\u0027entro io? Non ho mica paura... cio\u00E8, ne ho, ma solo un pochino... Sono i mercanti che mi danno da pensare. Dicono che gli faccio pagare cari i miei favori: ma io lo giuro, se anche io abbia preso qualcosa da qualcuno, l\u0027ho fatto sempre senza malanimo. Ho addirittura il sospetto, che qualcuno possa avermi denunziato. Per quale motivo senn\u00F2 dovrebbe arrivarci un\u0027ispezione? Ascoltate, Jean Dupont, non potreste, per il bene comune, aprire e leggere tutte le lettere che passano dal vostro ufficio, in arrivo e in partenza, e controllare se contengono qualche denuncia? Poi le rincollate, o del resto le potete consegnare cos\u00EC, aperte."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Voi non potete certo insegnarmi come fare il mio lavoro! Io queste cose le faccio da sempre, e mica per precauzione, no, io le faccio per curiosit\u00E0! Voi non sapete che gusto si prova a ficcare il naso in tutte le novit\u00E0. Delle letture interessantissime! Certe lettere sono davvero una delizia\u2026 e poi \u00E8 molto istruttivo!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "E allora diteci, non avete letto niente a proposito di un funzionario in arrivo dalla Capitale?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "No, non se ne parla, per\u00F2 \u00E8 un peccato che non leggiate queste lettere. Ci sono brani stupendi. Recentemente un tenente in una lettera a un amico descriveva un ballo con tale leggiadria: \u00ABLa mia vita scorre, amico mio\u00BB, diceva, \u00ABcome nell\u0027empireo: ci sono molte signorine, musica, lo stendardo sventola\u00BB... insomma, con molto, molto sentimento. Me la sono tenuta da parte apposta. Volete che ve la legga?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Adesso non \u00E8 proprio il momento. Piuttosto, fatemi una favore, Jean Dupont: se per caso vi capitasse tra le mani una lamentela o una denuncia, vi prego di trattenerla senza esitazione."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Con grande piacere."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "State attento, voi, perch\u00E9 prima o poi vi beccheranno!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Mamma mia!"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Qui si prepara qualcosa di brutto! E allora io, Sindaco, vi confesso che stavo per venire da voi per offrirvi una cagnolina. Non prendetela come bustarella, potrei offendermi se solo lei pensasse minimamente che \u2026 Sorella di quel cucciolo che gi\u00E0 conoscete. Avrete gi\u00E0 sentito che Ceptovi\u00E8 e Varchovinskij hanno litigato, cos\u00EC adesso mi va a meraviglia: caccio lepri sulle terre dell\u0027uno e dell\u0027altro."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Signore, in questo momento le vostre cagne non mi interessano. Ho in mente solo quel maledetto ispettore. Temo che da un momento all\u0027altro si apra la porta, cos\u00EC, e tr\u00E0cchete..."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Un avvenimento straordinario!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Una cosa fuori dal comune!"
+  },
+  {
+    "Personaggio": "TUTTI",
+    "Testo": "Come? Cosa?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Un fatto imprevedibile:"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "S\u00EC, lui arriva ..."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Dove? Dove?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Se permettete, comandante, stavo raccontando io\u2026"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Permetto"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Permette, permette\u2026 quindi?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Stavo raccontando appunto... Arrivo, all\u0027albergo..."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Quale albergo? Quale?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Permette allora o no?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Noi permettiamo, ma fatemi dire che il vostro modo di raccontare non ha uno stile appropriato"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Vi confondete e non ricordate mai tutto."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Mi ricordo, state tranquillo che mi ricordo. Smettetela di interrompermi, e lasciatemi raccontare. Non mi interrompete! Signore, ve ne prego, ditegli che non mi interrompa."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Per l\u0027amor del cielo, parlate una buona volta. Ho il cuore tutto in subbuglio. Sedete, signori! Prendete delle sedie!! Allora, che cosa \u00E8 successo?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Permettete\u2026?"
+  },
+  {
+    "Personaggio": "TUTTI",
+    "Testo": "Permettiamo!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Racconter\u00F2 tutto dall\u0027inizio. Avevo appena avuto il piacere di uscire da casa vostra, dopo che voi avevate avuto la compiacenza di turbarvi per la lettera che avevate ricevuto, proprio cos\u00EC, e avevo fatto un salto... non mi interrompete! Io so tutto, tutto, so tutto. Dicevo, avevo fatto un salto dal giudice Edward Chapkin. Non trovandolo in casa, mi ero affacciato dalla sovrintendente Felipa Delgado; non trovando nemmeno lui, ero passato da Jean Dupont, appunto\u2026"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "E perch\u00E9 da me non siete passato?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Vi avrebbe trovato in casa?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "No, ma\u2026"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Allora non lo interrompete! Prego\u2026"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "\u2026 ero da Dupont per comunicargli la notizi, quando, uscnedo, mi imbattei nel commissario di polizia\u2026"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Vicino al chiosco delle frittelle."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Vicino al chiosco delle frittelle."
+  },
+  {
+    "Personaggio": "TUTTI",
+    "Testo": "Vicino al chiosco delle frittelle! E poi?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Vicino al chiosco delle frittelle Incontro Sven il commissario e gli dico:"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u201Cavete sentito che notizia ha ricevuto il Sindaco da fonti degne di fede?\u201D"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Ma Sven era gi\u00E0 stato informato dalla vostra governante che non so bene perch\u00E9 era stata mandata l\u00EC da vostra moglie a prendere \u2026 un"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u2026 un barile per la vodka francese, lo so!."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "\u2026 non mi interrompete, per favore, non mi interrompete! Per strada il commissario Sven mi dice:"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u00ABFacciamo un salto in trattoria. \u2026 \u00E8 da stamattina che non mangio, e ho un buco nello stomaco\u00BB..."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "\u2026 s\u0027intende naturalmente lo stomaco di Sven."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u00ABHanno appena portato\u00BB, dico, \u00ABdel salmone fresco, andiamo ad assaggiarlo\u00BB. Eravamo appena entrati nell\u0027albergo quando all\u0027improvviso un giovanotto..."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Che fa? Che fa?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "cammina su e gi\u00F9 per la sala\u2026 di bell\u0027aspetto, in abito civile: il ritratto stesso della saggezza..."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "una fisionomia..."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "un modo di camminare... e qui dentro molto, molto di tutto. Allora io ebbi come un presentimento e dissi al Commissario: \u201Cquesto qui non \u00E8 qui per caso.\u201D."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Intanto io aveva gi\u00E0 fatto un cenno all\u2019oste: lo sa che la moglie ha partorito tre settimane fa un piccolino talmente vivace che aprir\u00E0 certamente anche lui una trattoria come il pap\u00E0."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Il commissario chiama l\u2019oste e gli chiede sottovoce:"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u201CChi \u00E8 quel giovanotto?\u201D"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "E l\u2019oste gli risponde:"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u201CQuello \u00E8 ... \u201C"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "E non m\u0027interrompete, per favore, non m\u0027interrompete; per l\u0027amor di Dio! Quando parlate, sembrate che borbottiate con quel dente che vi fischia in bocca... Dove eravamo rimasti?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Quel giovanotto, insomma, si pu\u00F2 sapere chi \u00E8 ?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "\u00ABQuel giovanotto\u00BB, risponde l\u2019oste, \u00AB\u00E8 un funzionario e viene dalla capitale e il suo nome \u00E8 Chlestakov; sta andando, fa, nella provincia di Saratov, e si comporta, mi fa, in modo molto strano: si \u00E8 piazzato l\u00EC gi\u00E0 dall\u0027altra settimana, non se ne va dall\u0027albergo, fa mettere tutto sul conto e - fa - non tira fuori un centesimo\u00BB. Allora, ho avuto una specie di illuminazione."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "\u201CAh\u201D, infatti ha detto il commissario \u2026"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u201CAh\u201D"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "E poi ?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "L\u0027ho detto anch\u0027io. \u201CAh!\u201D, abbiamo detto."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "e SVEN \u201CAh!\u201D e"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u201CAh!\u201D"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "E perch\u00E9 se ne sta qui se, come dice, deve andare nella provincia di Saratov?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Proprio cos\u00EC abbiamo detto! Allora \u2026."
+  },
+  {
+    "Personaggio": "TUTTI",
+    "Testo": "allora?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Allora quel funzionario \u00E8 lui!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma che cosa dite, per l\u0027amor di Dio! Non pu\u00F2 essere lui!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "\u00C8 lui! \u00C8 lui, \u00E8 lui, vi dico, proprio lui!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Non sborsa un soldo e non se ne va ... \u00C8 cos\u00EC attento: ha osservato tutto."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Ha visto che io e il commissario mangiavamo salmone, anche perch\u00E9 il commissario quando mangia pare un lupo nella steppa. Ci ha addirittura guardato nel piatto. Uno sguardo cos\u00EC penetrante che ho sentito una fitta di terrore."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Signore, abbi piet\u00E0 di noi poveri peccatori! E dove \u00E8 alloggiato?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Nella camera numero cinque, sotto la scala."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Ed \u00E8 qui da molto?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Saranno gi\u00E0 un due settimane."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Due settimane! Dio mio! Santi del Cielo, , salvatemi voi! In queste due settimane \u00E8 stata frustata la moglie del sottufficiale! E i prigionieri non hanno ricevuto le loro razioni. Per le strade, poi, c\u0027\u00E8 un caos, una sporcizia. Che vergogna! Che affronto!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Presto, Sindaco, bisogna andare tutti all\u2019albergo in pompa magna."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "No, no. Meglio mandare avanti prima di tutto il sindaco, il clero e i mercanti\u2026"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "No, no; lasciate che ci vada io da solo. Ho gi\u00E0 passato giorni difficili nella mia vita, li ho superati, e ne ho ricavato addirittura qualche vantaggio; forse Dio mi aiuter\u00E0 anche adesso. Avete detto che \u00E8 giovane?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Trent\u2019anni o poco pi\u00F9."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Tanto meglio: un giovane lo si capisce pi\u00F9 alla svelta. Se fosse stato uno di quei vecchi demoni, ce la saremmo vista brutta, ma un giovane ha tutto scritto in faccia. Voi, signori, preparatevi per la parte che vi spetta, mentre io andr\u00F2 da lui da solo, o al massimo con Bob\u00E8inskij, in forma privata, tanto per controllare che i forestieri non abbiano qualche problema."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Andiamo, andiamo, Edward Chapkin. Altrimenti ci pu\u00F2 capitare davvero qualche guaio."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Ma di cosa avete paura? Mettete ai malati dei berretti puliti, e chi s\u0027\u00E8 visto s\u0027\u00E8 visto!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ma quali berretti! \u00C8 passata la circolare di dare ai malati zuppa d\u0027avena, e da me nei corridoi c\u0027\u00E8 una tale puzza di cavolo che ti devi tappare il naso."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Io invece posso dormire sonni tranquilli: ha ragione il sindaco, chi oserebbe mettere il naso al tribunale distrettuale? E se gli saltasse in mente di dare un\u0027occhiata a qualche carta, poveretto lui! La vita, si rovinerebbe. Io \u00E8 da quindici anni che occupo il posto di giudice e se mi capita di guardare un verbale - ah! lascio subito perdere. Nemmeno Salomone riuscirebbe a capire cosa c\u0027\u00E8 di vero e cosa di falso. Il giudice, la sovrintendente alle opere pie, il provveditore scolastico e L\u0027ufficiale Postale escono e sulla porta si scontrano con il Commissario Sven che rientra"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Sven fa preparare il calesse."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Gi\u00E0 prontissimo, Sindaco."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Vai in strada... anzi no, fermati! Ma dove sono gli altri? Come mai sei solo? Dov\u2019\u00E8 il questore?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Il Questore \u00E8 al commissariato, solo che \u00E8\u2026 indisponibile"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Come mai?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Niente di speciale: l\u0027hanno riportato stamattina ubriaco fradicio. Gli hanno gi\u00E0 rovesciato addosso due mastelli d\u0027acqua, ma per ora non si \u00E8 ripreso."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah, Dio mio, Dio mio! Corri, portami la spada e il cappello nuovo. Andiamo"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Anch\u0027io, anch\u0027io... permettete che venga anch\u0027io, Sindaco!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "No, no, Bob\u00E8inskij, non si pu\u00F2, non si pu\u00F2! Non sta bene, e poi non ci staremmo sul calesse."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Non importa, vengo cos\u00EC, vi corro dietro di nascosto. Mi basterebbe sbirciare appena appena da dietro la porta per vedere quello che fa..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Corri subito, prendi i vigili, e che ognuno di loro prenda... ma com\u0027\u00E8 tutta graffiata questa spada! Quel maledetto mercante: vede che il sindaco ha la spada vecchia e non gliene manda una nuova! Oh, che gente perfida! E adesso quegli imbroglioni staranno gi\u00E0 preparando di nascosto le loro lamentele. Che ognuno metta mano alla strada - che dico, alla strada! - alla scopa, e spazzino tutta la strada della trattoria, finch\u00E9 non \u00E8 ben pulita. Sven? Dove eravate finito?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Sempre stato qui, Sindaco."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Beh, adesso ascoltatemi, Commissario! \u00C8 arrivato un funzionario da Capitale."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Lo so! Stamattina siamo andati dall\u2019oste che \u2026"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Per favore, risparmiamela di nuovo! Che disposizioni avete dato?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Ho mandato i poliziotti con i vigili a spazzare la strada."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E il vice commissario dov\u0027\u00E8?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u00C8 andato con la pompa antincendio."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E il Questore \u00E8 ubriaco?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "S\u00EC."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma come avete potuto permetterglielo?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Lo sa il cielo. Ieri in citt\u00E0 c\u0027\u00E8 stata una rissa: lui \u00E8 andato l\u00E0 per ristabilire l\u0027ordine ed \u00E8 tornato ubriaco."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ascoltatemi adesso, fate come vi dico: il poliziotto, che \u00E8 alto, piazzatelo sul ponte a scopo decorativo. E fate abbattere immediatamente quella vecchia palizzata vicino al calzolaio, ed erigere un palo con della paglia che faccia pensare a un cantiere. Quanto pi\u00F9 si demolisce, tanto pi\u00F9 intensa apparir\u00E0 l\u0027attivit\u00E0 dell\u0027amministrazione! E se l\u0027Ispettore dovesse chiedere a qualcuno degli impiegati se sono soddisfatti, che tutti rispondano: soddisfattissimi, vostra signoria, e se ci saranno degli insoddisfatti, gliela faccio vedere io, dopo, l\u0027insoddisfazione..."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Sindaco, \u00E8 la scatola, quella, non il cappello."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "S\u00EC, s\u00EC, la scatola. Che vada al diavolo! E se chiedessero come mai non \u00E8 stata costruita la chiesa dell\u0027opera pia per cui cinque anni fa abbiamo ricevuto dei fondi, non dimenticatevi di dire che i lavori erano cominciati, ma la chiesa \u00E8 bruciata, come ho scritto anche nella mia relazione. Altrimenti magari qualcuno si dimentica e per pura imbecillit\u00E0 finisce col dire che quella chiesa non \u00E8 mai stata nemmeno iniziata... Ah, e bisogna dire ai poliziotti di non esagerare coi pugni: con la scusa di mantenere l\u0027ordine quelli piazzano a tutti due belle uova al tegamino sotto gli occhi, colpevoli o innocenti che siano. Andiamo, andiamo! E non fate uscire i soldati senza niente: quelle canaglie mettono solo la divisa sopra la camicia, senza niente sotto. Escono tutti."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma dove, dove sono? Ah, Dio mio... Marito mio! Anton! Antonino! Sei sempre tu, \u00E8 sempre colpa tua. Te ne stai a perder tempo: \u00ABmi metto lo spillino, mi metto il fazzolettino\u00BB Anton, dove vai, dove vai? Allora, \u00E8 arrivato? L\u0027ispettore? Ha i baffi! Quanti baffi?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Dopo, dopo, cara."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Dopo? Dopo?! Io non voglio dopo... Una parola soltanto, ti prego: chi \u00E8, un colonnello? Eh? Se n\u0027\u00E8 andato. Ma non te la far\u00F2 passar liscia! Sempre con quel tuo: \u00ABmammina, mammina, aspettate, mi appunto il fazzoletto dietro e arrivo subito\u00BB. Ecco qua il tuo subito! Per colpa tua non sappiamo niente! Sempre la stessa maledetta civetteria, hai sentito che Jean Dupont era qui e via, davanti allo specchio a leccarsi tutta: sta bene di qui, sta bene di l\u00E0. Immagina che lui le faccia la corte, e invece ti fa le smorfie non appena ti giri di l\u00E0."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma che ci vuoi fare, mammina? Tanto \u00E8 uguale, no? Tra due ore sapremo tutto lo stesso."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Tra due ore! Grazie, grazie di cuore. Bella risposta. Non sarebbe ancora meglio sapere tutto tra un mese? Ha la testa piena di sciocchezze, ha in mente solo i fidanzati. Eh? Cosa dovremmo fare adesso, correre dietro alla carrozza? Stupida stupida che non sei altro! Anton, Antonino, torna presto! Presto, presto, presto, presto. Grida finch\u00E9 non si abbassa il sipario. Il sipario nasconde entrambe le donne mentre sono alla finestra."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Al diavolo! Ho una fame da lupi; la pancia brontola come se ci fosse un reggimento di trombettieri. Non torneremo mai a casa di questo passo! Che dobbiamo fare, vorrei sapere\u2026? Sono passati due mesi da quando abbiamo lasciato la Capitale! Ha buttato via tutti i suoi soldi durante il viaggio, per fare il bel damerino, e adesso deve restare qui con la coda fra le gambe e non si d\u00E0 pi\u00F9 tante arie! Avremmo avuto abbastanza per pagare il viaggio, ma no, lui doveva per forza fare il brillante in ogni citt\u00E0 in questo modo! \u0022Ehi, Osip, vai a prenotarmi la stanza migliore che hanno, e ordina la cena migliore che possano cucinare; non sopporto niente di economico o dozzinale, voglio il meglio!\u0022. Ancora ancora fosse davvero una persona importante, e invece macch\u00E9, \u00E8 solo un semplice impiegato copista. Fa conoscenza con i primi che incontra, si mette a giocare a carte e in quattro e quattr\u0027otto ha gi\u00E0 perso tutto. Ah, sono stufo di questa vita! Vuoi mettere nel mio piccolo villaggio? Vabb\u00E8, non succede un granch\u00E9, ma ci sono anche meno pensieri. Ti prendi una donna, te ne stai stravaccato tutto il tempo davanti la stufa e mangi... S\u00EC certo, senza dubbio, niente \u00E8 come la vita a Capitale! Basta avere i soldi, e fai la vita pi\u00F9 raffinata e politica che ci sia: teatri, cani che ballano... tutto quello che vuoi. Che maniere eleganti, accidenti! Mai una parola sgarbata, tutti ti danno del voi. Te ne stai seduto come un signore, e se non vuoi pagare, prego: sgusci via e non ti ritrova pi\u00F9 nemmeno il diavolo. C\u0027\u00E8 un solo problema: che una volta mangi a saziet\u00E0, e un\u0027altra quasi crepi di fame, come adesso. E la colpa \u00E8 sua. Che ci puoi fare? Il pap\u00E0 glieli manda, i soldini da mettere da parte, ma lui - figurati! Va a far baldoria: e gira in carrozza, e vuole ogni giorno i biglietti per il teatro, e poi, dopo una settimana, mi manda al mercato a vendere il frac nuovo di zecca. Lo giuro davanti a Dio! Roba inglese! Centocinquanta marchi gli era costato, solo il frac, e al mercato l\u0027ha dato via per venti, per non parlare dei pantaloni: zero marchi, ciambella. E perch\u00E9? Perch\u00E9 non fa il suo lavoro: invece di fare il suo dovere, se ne va a passeggio sul corso o a giocare a carte. Ah, se lo sapessero in Capitale! Te ne darebbero tante che ti ci vorrebbero quattro giorni solo per grattarti. Vuoi prestare servizio? E allora datti da fare. L\u0027oste lo ha minacciato: non gli dar\u00E0 pi\u00F9 da mangiare se non salda il conto arretrato; e se non paghiamo? Oddio, dio, dio, avessi almeno un po\u0027 di cavolo. Sento che mi ci starebbe il mondo intero, qui dentro. Bussano, sar\u00E0 senz\u0027altro lui."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Forza, prendi. Te ne sei stato di nuovo a rotolarti al letto?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Io che mi rotolo sul letto? Non ho visto nessun letto!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Bugiardo, ti ci sei sdraiato: guarda com\u0027\u00E8 in disordine."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Ma che me ne faccio del letto? Pensate che non sappia cos\u0027\u00E8 un letto? Ho le mie gambe e sto in piedi. Perch\u00E9 dovrei volere il vostro letto?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Guarda se c\u0027\u00E8 un po\u0027 di tabacco!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Ma come volete che ci sia! Le ultime briciole le avete fumate quattro giorni fa."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ehi, Osip, ascoltami!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Comandi!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Vai gi\u00F9, al buffet... E di\u0027... che mi servano il pranzo."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "No, non ci penso proprio"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come osi? Hai il coraggio di rifiutarti, testa di legno!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "S\u00EC! E in ogni caso, anche se ci andassi, non se ne caverebbe niente. L\u2019oste ha detto che non vi dar\u00E0 pi\u00F9 da mangiare."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come osa non darmi pi\u00F9 da mangiare!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Ha detto anche che andr\u00E0 sindaco: \u201C\u00E8 la terza settimana che il signore non paga. Tu e il tuo padrone, ha detto, siete una coppia di imbroglioni, e il tuo padrone \u00E8 un truffatore scellerato. Noi - cos\u00EC ha detto - noi li conosciamo bene, i mascalzoni come voi\u201D."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E tu, bestia, sei tutto contento di venire a raccontarmi queste cose."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "\u201CS\u00EC\u201D, ha detto lui, \u201Cio non scherzo, faccio una bella denuncia, cos\u00EC che lo spediscano al fresco, in prigione\u201D."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Basta cos\u00EC, scemo! Vai a parlargli. Che razza di animale!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "\u00C8 meglio che faccia venire l\u2019oste direttamente da voi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che me ne faccio? Va\u0027 e parlagli tu."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Ma davvero, signore..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E va\u2019, va\u00EC, che il diavolo ti porti! E chiama \u0027sto padrone. Osip esce."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ho una fame infernale. Ho fatto due passi per vedere se mi passava l\u0027appetito, ma niente, dannazione, non mi \u00E8 passato. Certo, se non avessi fatto baldoria nell\u2019altra citt\u00E0 ora avrei i soldi per arrivare a casa. Quel capitano di fanteria mi ha fregato per bene. Mi ha massacrato, quel farabutto ... Non ci ha messo pi\u00F9 di un quarto d\u2019ora a ripulirmi del tutto. Darei qualsiasi cosa per prendermi una rivincita! Che cittadina schifosa! Non ti fanno credito nemmeno gli ortolani. \u00C8 semplicemente vergognoso. Certo che se non vuole darmi proprio niente da mangiare le cose si mettono male. Mai avuto una fame cos\u00EC. Magari, se vendessi qualche altro capo di abbigliamento... I pantaloni, per esempio. No, meglio fare la fame, ma arrivare a casa con un vestito della Capitale. Peccato non abbia noleggiato una carrozza: accidenti, che bello sarebbe stato presentarsi a casa in carrozza, arrivare come un diavolo fin sotto il terrazzino di vicino, i fanali accesi e Osip in livrea seduto dietro. Mi par di vedere scoppiare l\u0027agitazione dappertutto: \u00ABChi \u00E8, che cosa succede?\u00BB, e Osip, scintillante nella sua livrea dorata, sarebbe sceso : \u00ABChlestakov dalla Capitale, ordinate di riceverlo?\u00BB. Loro, naturalmente, non sanno nemmeno che cosa significhi \u00ABordinate di riceverlo\u00BB. Puah ho addirittura la nausea dalla fame."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Arriva il pranzo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Arriva! Arriva! Arriva!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "\u00C8 l\u0027ultima volta che il padrone vi d\u00E0 da mangiare."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Oh, il padrone, il padrone... me ne infischio di questo tizio! Che cos\u0027hai l\u00EC?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Zuppa e arrosto."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come sarebbe, solo due portate?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Solo due portate."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che scherzi sono questi! Io questo pranzo non lo accetto. Diglielo: ma che roba \u00E8! \u00C8 troppo poco."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "L\u2019oste dice che \u00E8 anche troppo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E perch\u00E9 non c\u0027\u00E8 il sugo?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Il sugo non c\u0027\u00E8."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come non c\u0027\u00E8? Ho visto io stesso, passando davanti alla cucina, che ne stavano preparando un sacco. E in sala da pranzo stamattina c\u0027erano due tizi che mangiavano salmone e molta altra roba."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Certo che ce n\u0027\u00E8: eppure non ce n\u0027\u00E8."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come non ce n\u0027\u00E8?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Non ce n\u0027\u00E8."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E il salmone, il pesce, le polpette?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Quelli sono per chi \u00E8 pi\u00F9 onesto di voi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come osi, brutto porco... Loro devono mangiare, e io no? E perch\u00E9 io non posso mangiare come loro? Non sono clienti come me?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Certamente no."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E come sono?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Sono clienti soliti! Quelli che pagano."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Non voglio stare qui a discutere con te, idiota. Ma che razza di cosa \u00E8 questa? La chiami zuppa questa? Ha semplicemente versato acqua calda nella zuppiera: non ha nessun gusto, puzza e basta. Non voglio questa zuppa, portamene un\u0027altra."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Molto bene, la riporto indietro. L\u2019oste ha detto che se non la volete non fa niente."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Beh, beh, beh... Lasciala l\u00EC, bastardo; tu sei abituato a trattare cos\u00EC la gente, ma io, caro mio, non sono mica di quella razza! Con me ti consiglio di non provarci... Dio mio, che zuppa! Credo che nessuno al mondo abbia mai mangiato una zuppa cos\u00EC! Ci sono pi\u00F9 piume che grasso... Ahi, ahi, ahi, questa gallina mi fa quasi pena poverina! Passami l\u0027arrosto, ve\u0027! \u00E8 avanzata un po\u0027 di zuppa, Osip, prendila tu. Ma che arrosto \u00E8? Questo non \u00E8 un arrosto."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "E che cos\u0027\u00E8?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Sa il diavolo cos\u0027\u00E8 - non certo arrosto. Devono avere arrostito un\u2019incudine al posto della carne. Ladri, canaglie, che cosa mi date da mangiare? Mi fanno male le mascelle a anche mangiarne un solo boccone. Imbroglioni! Corteccia, ecco cos\u0027\u00E8, non c\u0027\u00E8 verso di tagliarla. Dopo un pranzo cos\u00EC, c\u0027\u00E8 da ritrovarsi i denti neri. Maledetti! Non c\u0027\u00E8 nient\u0027altro?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "No."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Canaglie, mascalzoni! Almeno mi avessero dato un po\u0027 di sugo, o un dolce. Fannulloni! Capaci solo di derubare i forestieri! Osip sparecchia e porta via i piatti."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "\u00C8 come se non avessi nemmeno mangiato; mi ha solo aperto l\u0027appetito."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "\u00C8 arrivato il sindaco, di l\u00E0, e sta domandando notizie sul vostro conto."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Cazzo! Quel bruto dell\u2019oste \u00E8 gi\u00E0 andato a denunciarmi. E se riuscisse davvero a trascinarmi in prigione? A quel punto, cosa potrei fare? Magari potrei presentarmi con aria aristocratica... No, non posso... e, poi, chi \u00E8 lui per permettersi? Trattarmi come se fossi un bottegaio o, peggio, come fossi un lavoratore? Ma glielo dir\u00F2 chiaramente: come osate, come vi siete permesso? La maniglia della porta gira; Chlestakov impallidisce e si rattrappisce."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "I miei omaggi!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "I miei rispetti..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Mi scusi per l\u2019intrusione\u2026"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma si figuri, non \u00E8 niente."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "\u00C8 mio dovere, come responsabile di questa citt\u00E0, preoccuparmi che i nostri ospiti e tutte le persone per bene non abbiano a patire qualche disagio..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che posso farci! Non \u00E8 colpa mia... Pagher\u00F2, davvero... me li manderanno dalla campagna. Lui s\u00EC che \u00E8 colpevole: mi ha dato del manzo pi\u00F9 duro di un tronco, e la zuppa - sa il diavolo cosa ci ha buttato dentro! -. Mi ha fatto fare la fame per giorni e giorni... Il t\u00E8 poi \u00E8 indescrivibile: puzza di pesce. Allora perch\u00E9 poi dovrei... che razza di storia \u00E8 questa!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Scusate, vi prego, non \u00E8 colpa mia. Al mercato da noi il manzo \u00E8 sempre buonissimo. Ma se qualcosa non va... Se permettete, io vi inviterei a trasferirvi in un altro alloggio."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, non voglio. So perfettamente che cosa significa \u00ABin un altro alloggio\u00BB: in galera. Ma con che diritto vi permettete... Come osate? Io, ecco... Io presto servizio presso la Capitale. Io, io, io..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Oh, Signore Iddio, com\u0027\u00E8 arrabbiato! Ha scoperto tutto, dunque gli hanno gi\u00E0 raccontato tutto, quei maledetti mercanti!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Potete anche venire con tutta la guarnigione - non mi muovo! Io vado dritto dal ministro! Chi sei tu, dico, chi pensi di essere tu?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Abbiate piet\u00E0, non mandateci in rovina! Mia moglie, i miei bambini..."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Non distruggete quest\u2019uomo!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, non mi interessa. Che mi importa? Perch\u00E9 voi avete moglie e figli, io dovrei andare in prigione, senti che idea! No, vi ringrazio di cuore, ma non me ne vado da qui."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "\u00C8 stato per inesperienza, ve lo giuro, solo per mia inesperienza. E per mancanza di mezzi. Abbiate la bont\u00E0 di giudicare voi stesso: lo stipendio che lo stato mi manda non basta neppure per il t\u00E8 e lo zucchero. Se anche c\u0027\u00E8 stata qualche bustarella, erano cose da nulla: qualcosa per la tavola, un paio di vestiti... Quanto poi alla vedova del sottufficiale, quella che adesso si \u00E8 data... ehm... al commercio, non \u00E8 vero che l\u0027ho fatta frustare, questa, ve lo giuro, \u00E8 una calunnia, una calunnia. L\u0027hanno architettata i miei nemici: gente che senza dire n\u00E9 a n\u00E9 ba sarebbe capace di attentare alla mia stessa vita."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma cosa importa a me dei vostri nemici! Non so nemmeno perch\u00E9 mi parlate dei vostri nemici, o della vedova del sottufficiale... Certo, la vedova del sottufficiale \u00E8 tutt\u0027altra cosa, ma non oserete per questo frustare me! Non pensateci nemmeno... Ci mancherebbe proprio! Comunque pagher\u00F2, pagher\u00F2 tutto, solo che adesso non li ho! E me ne sto qui proprio perch\u00E9 non ho nemmeno un centesimo."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah furbo! Lo vedi dove \u00E8 andato a parare!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "E che polverone ha sollevato!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Chi ci capisce qualcosa \u00E8 bravo!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Non si sa da che parte prenderlo!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Qui bisogna andare per tentativi!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Sia quel che sia, o la va o la spacca. Se avete bisogno di soldi. o altro, sono pronto a servirvi immediatamente. Aiutare gli ospiti della citt\u00E0 \u00E8 mio preciso dovere."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Prestatemi allora una piccola somma; salder\u00F2 subito l\u0027oste. Mi basterebbero solo un \u2026 duecento marchi, o anche meno."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Duecento marchi tondi, non si prenda la briga di contarli."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Vi ringrazio umilmente. Ve li mander\u00F2 subito dalla campagna, \u00E8 stato un caso imprevisto... Vedo che siete una persona nobile. Adesso \u00E8 tutto diverso."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Fiuuu, grazie a Dio, i soldi li ha presi."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Adesso penso che le cose si metteranno a posto."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Vorrei vedere: invece di duecento marchi, gliene ho arrotolati quattrocento."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ehi, Osip! Vai a chiedere il conto a quel balordo! Ma perch\u00E9 ve ne state in piedi? Vi prego, sedetevi"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non fa niente, possiamo stare anche in piedi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Fatemi questo piacere, sedetevi. Adesso vedo chiaramente la sincerit\u00E0 del vostro carattere e la vostra cordialit\u00E0; prima, lo confesso, pensavo addirittura che foste venuti per...Sedetevi!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Qui ci vuole un po\u0027 pi\u00F9 di fegato."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Vuol mantenere l\u0027incognito? Bene, staremo al gioco anche noi: facciamo finta di non sapere chi \u00E8."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Dal momento che ci trovavamo in giro per ragioni di servizio, io e Bobeinskij siamo passati subito dalla locanda per informarci se i forestieri erano trattati bene, dato che io non sono come certi altri sindaci che non si interessano di nulla; sia per dovere di servizio che per carit\u00E0 cristiana, io qui voglio che ogni mortale riceva una degna accoglienza; ed ecco che ora, come un\u0027insperata ricompensa, il caso mi riserva una conoscenza cos\u00EC piacevole."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Sono anch\u0027io molto lieto di questa circostanza. Senza di voi, confesso che me ne sarei dovuto restare qui ancora un bel po\u0027: non sapevo assolutamente come fare a pagare."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Seeh, raccontalo a un altro!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Posso domandarvi dove avete la compiacenza di recarvi?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Vado nella provincia di Saratov, nelle mie terre."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Nella provincia di Saratov, eh? E con che disinvoltura!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Con questo qui \u00E8 bene stare all\u0027erta! Vi siete compiaciuto di imbarcarvi in una bella impresa... Lo dico per il viaggio: sembra che per certi versi sia snervante a causa dei cambi di cavalli; d\u0027altra parte per\u00F2 per l\u0027intelletto \u00E8 anche una bella distrazione. Immagino che i vostri siano per lo pi\u00F9 viaggi di piacere, non \u00E8 vero?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, \u00E8 mio padre che mi reclama. Il mio vecchio \u00E8 arrabbiato perch\u00E9 finora non ho fatto carriera in Capitale. Pensa che l\u00EC, appena uno arriva, gli mettano una Croce Al Merito al collo. Vorrei vedere lui come se la caverebbe in una cancelleria."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma senti che roba! Adesso tira in ballo anche il vecchio padre! E avete intenzione di stare via per molto?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Francamente non lo so. Il mio vecchio \u00E8 testardo e duro come un tronco. Ma glielo dir\u00F2 a chiare lettere: sia come sia, io senza la Capitale non posso vivere. Perch\u00E9 mai dovrei crepare tra i contadini? Adesso ho altre esigenze: la mia anima anela alla cultura."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Bugie, bugie a getto continuo!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Cos\u00EC dimesso, cos\u00EC delicatino."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Potrei schiacciarlo con un\u0027unghia."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma aspetta, aspetta, caro: finirai col tradirsi. Ci penser\u00F2 io a fargli sputare la verit\u00E0! Molto giusta. Cosa si pu\u00F2 fare in campagna?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Prendete la nostra citt\u00E0!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ti voti anima e corpo alla causa della patria, dai fondo a tutte le tue risorse, sacrifichi persino le notti, e la ricompensa? A quando? Mi sembra un po\u0027 umida questa camera."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "\u00C8 una camera orrenda. Mai visto cimici cos\u00EC grosse. Danno certi morsi che sembrano cani."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non ditemelo! Un ospite tanto illuminato... e deve soffrire, per colpa di chi, poi? Di queste inutili cimici che non dovrebbero nemmeno esistere. Sbaglio o la vostra camera \u00E8 anche un po\u0027 buia?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Altro che buia... Il padrone ha preso l\u0027abitudine di non darci le candele. A volte vien voglia di fare qualcosa, che so, di leggere, o magari ti nasce il desiderio di scrivere una paginetta: non puoi: buio, buio pesto."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Posso osare... ma no, non ne sono degno."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Di che cosa?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "No, no, non ne sono degno, non ne sono degno!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Cosa dite? Non capisco."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Oserei... nella mia casa ci sarebbe una bellissima camera, luminosa, tranquilla... Ma no, mi rendo conto io stesso che sarebbe un onore troppo grande... Non ve ne abbiate a male. Vi giuro che ve ne ho parlato solo per semplicit\u00E0 di cuore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Al contrario, se permettete accetto con piacere. Mi troverei molto pi\u00F9 a mio agio in una casa privata che in questa taverna."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Mi fate proprio felice! E anche mia moglie ne sar\u00E0 lietissima! Perch\u00E9 questo, dovete sapere, \u00E8 il mio carattere, fin dalla pi\u00F9 tenera et\u00E0: massima ospitalit\u00E0, soprattutto se l\u0027ospite \u00E8 una persona istruita. Non pensate che parli cos\u00EC per adularvi. No, io non ho questo vizio: sono parole che mi vengono dall\u0027anima."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Vi ringrazio umilmente. Io detesto le persone false. Viceversa, apprezzo molto la vostra franchezza e la vostra cordialit\u00E0, e, lo confesso, non chiederei nulla di pi\u00F9 che un po\u0027 di devozione e di rispetto: rispetto e devozione. Osip!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Mi avete chiamato?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC; il conto."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Il primo giorno vi siete compiaciuto di ordinare il pranzo, il secondo avete mangiato solo il salmone e poi avete cominciato a prendere tutto a credito."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E si mette anche a fare i conti, l\u0027idiota. Quanto \u00E8 in tutto?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non vi inquietate, vi prego, l\u2019oste aspetter\u00E0: digli che i soldi glieli manderemo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Giusto, \u00E8 vero anche questo. Nasconde i soldi. Il servitore se ne va. Da dietro la porta fa capolino Bob\u00E8inskij."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E ora non gradireste visitare qualche istituzione della nostra citt\u00E0, le opere pie, per esempio, e qualche altra?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Cos\u00EC vedrete come funzionano le cose qui da noi... la nostra organizzazione..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Con immenso piacere. Eccomi, sono pronto."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Poi, se lo desidererete, potrete visitare anche la scuola distrettuale e osservare i nostri metodi d\u0027insegnamento delle scienze."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Con piacere, con piacere."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Infine, se vorrete visitare le carceri e la prigione municipale, constaterete di persona come trattiamo i delinquenti."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma perch\u00E9 le carceri? Meglio visitare le opere pie."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Come preferite. Avete intenzione di prendere la vostra carrozza, o venite sul mio calesse?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, meglio che venga con voi."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Mi spiace, Bob\u00E8inskij, ma adesso per voi non c\u0027\u00E8 pi\u00F9 posto."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Non fa niente, verr\u00F2 a piedi."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ascoltate: correte, ma a tutta birra, intesi? Ci sono due biglietti da portare: uno a Felipa Delgado alle opere pie, e uno a mia moglie. Posso chiedervi il permesso di scrivere in vostra presenza due righe a mia moglie, perch\u00E9 si prepari ad accogliere un ospite tanto gradito?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Certo\u2026 l\u00EC c\u0027\u00E8 l\u0027inchiostro, solo la carta... non so... Forse potete usare questo conto."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Scriver\u00F2 qui. E adesso vedremo come si mettono le cose dopo uno spuntino e una bottiglia bella panciuta! Vorrei proprio sapere chi \u00E8 e fino a che punto bisogna temerlo. "
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che cosa \u00E8 successo? Vi siete fatto male?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Niente, niente, solo una piccola ammaccatura sul naso."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non \u00E8 niente. Favorite! Carissimo, porta tutto da me, dal sindaco, la strada te la sapr\u00E0 indicare chiunque. Prego! Accidenti a voi! Non potevate trovare un altro posto per cadere! Vi siete spatasciato l\u00EC come non so che cosa."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ecco qua: \u00E8 gi\u00E0 un\u0027ora che aspettiamo, e tutto per colpa tua e delle tue stupide moine: era gi\u00E0 vestita di tutto punto, e invece no, deve perdere dell\u0027altro tempo... Dio sa, poi, perch\u00E9 ti do retta. Che rabbia! Nessuno, non un\u0027anima, manco a farlo apposta! Sembra che siano tutti morti."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Suvvia, mammina, tra due minuti sapremo tutto. Ah, mammina, mammina! Arriva qualcuno, l\u00E0, in fondo alla strada. \u00C8 Bob\u00E8inskij, mammina."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Macch\u00E9 Bob\u00E8inskij! Sempre con le tue fantasie! Quello non \u00E8 assolutamente Bob\u00E8inskij. Ehi, voi, venite qua! Correte!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Dico davvero, mammina, \u00E8 proprio Bob\u00E8inskij."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ecco: lo fai apposta per contraddirmi. Ti ho detto che non \u00E8 Bob\u00E8inskij."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "E allora? E allora, mammina? Guardate da voi, se non \u00E8 Bob\u00E8inskij."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Va be, va be, \u00E8 Bob\u00E8inskij, adesso lo vedo; non c\u0027\u00E8 mica bisogno di litigare. Su, su, presto! Non camminate cos\u00EC piano. E gli altri dove sono? Eh? Parlate pure da l\u00EC, \u00E8 lo stesso. Allora? \u00C8 molto severo? Eh? E mio marito, mio marito? Ah, che idiota: dice che finch\u00E9 non \u00E8 entrato in casa, lui non apre bocca!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E adesso ditemi, per favore: non vi vergognate? Io facevo conto solo su di voi, come su una persona per bene: e invece, sono scappati tutti, e voi, dietro! E finora non ho saputo un\u0027acca da nessuno! Non vi vergognate! Ho tenuto a battesimo le vostre figlie e questo \u00E8 il vostro ringraziamento!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Vogliate credermi, comare, ho corso talmente per venire a porgervi i miei omaggi che non riesco nemmeno a respirare."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E allora? Forza, raccontate: cos\u0027\u00E8 successo?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "E le cose come vanno, bene?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Il Sindaco vi ha manda un biglietto."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "D\u0027accordo, il biglietto, ma lui cos\u2019\u00E8?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Un generale?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "No, un generale no, ma non ha niente da invidiare a un generale. Una cultura, e un fare cos\u00EC pieno di dignit\u00E0!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ah! Allora, \u00E8 proprio quello di cui hanno scritto a mio marito."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Lui sputato. E sono stato io il primo a scoprirlo."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E allora, raccontate: com\u0027\u00E8 andata?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Ringraziando Iddio, tutto si \u00E8 sistemato per il meglio. All\u0027inizio ha accolto il Sindaco con una certa severit\u00E0; ah s\u00EC, se l\u0027\u00E8 presa, sa? - e ha detto che alla locanda andava tutto male, e che non aveva nessunissima intenzione di andare in prigione per colpa sua, ma poi, quando ha riconosciuto l\u0027innocenza del nostro Primo Cittadino e la conversazione si \u00E8 un pochino sciolta, ha subito cambiato idea e, grazie a Dio, tutto \u00E8 finito bene. Adesso sono andati insieme a visitare le opere pie... Ma sulle prime, devo dire, il Sindaco pensava che qualcuno avesse gi\u00E0 parlato, e anch\u0027io mi sono spaventato."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma cosa avete da spaventarvi, voi: mica avete qualche ruolo pubblico!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Eppure \u00E8 cos\u00EC: quando parlano i potenti, ti prende il terrore."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ditemi: che aspetto ha? Com\u0027\u00E8, giovane o vecchio?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Sui trent\u2019anni; ma parla come un vecchio. \u201CCon piacere \u2013 dice - verr\u00F2 sia l\u00E0 sia l\u00E0...\u201D Con che eleganza! Io, dice, amo scrivere, o leggere qualcosa, ma mi infastidisce il fatto che la camera sia un po\u0027 buia."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma di aspetto com\u0027\u00E8: bruno o biondo?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "No, castano, piuttosto, e con due occhi vivi che sembrano bestioline, tanto che ti mandano in confusione."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Sentiamo cosa mi scrive: \u00ABMi affretto a informarti, anima mia, che confidando nella misericordia di Dio, due cetrioli in salamoia, a parte, e mezza porzione di caviale, venti marchi e cinque centesimi...\u00BB. Non ci capisco niente, cosa c\u0027entrano i cetrioli in salamoia e il caviale?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "E che il Sindaco per fare prima ha usato un pezzo di carta che c\u0027era l\u00EC: doveva esserci un conto."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ah, \u00AB...ma, confidando nella misericordia di Dio, mi pare che tutto si sia volto al meglio. Prepara al pi\u00F9 presto la camera per gli ospiti di riguardo, non ti preoccupare per il pranzo, perch\u00E9 mangeremo qualcosa da Felipa Delgado alle opere pie. Ordina piuttosto dell\u0027altro vino; di\u0027 all\u2019oste che mandi il migliore, altrimenti gli rivolto la cantina. Baciandoti la mano, rimango, anima mia, il tuo Anton...\u00BB. Ah, Dio mio! Bisogna far presto! Ehi, chi c\u0027\u00E8 l\u00EC? Ufficiale Postale!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Jean Dupont! Jean Dupont! Jean Dupont! Entra l\u2019Ufficiale Postale."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ascoltami bene: corri subito a farti dare il vino! E poi, appena tornato, corri immediatamente a sistemare come si deve la camera degli ospiti! Bisogna metterci il letto, il lavamani eccetera."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Signora, ma perch\u00E9 devo andare io a sistemare la cam\u2026?"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Questo \u00E8 un momento di vitale importanza per l\u2019intera citt\u00E0, se continui sarai posto davanti al Collettivo!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Il colletivo no!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Il Collettivo s\u00EC"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "esce di corsa."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Beh, io andrei a vedere come va l\u0027ispezione."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Andate, andate, non vi trattengo."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Su, Mariuccia, adesso dobbiamo pensare al nostro abbigliamento. Questo \u00E8 un giovane signorino della capitale: Dio non voglia che rida di noi! Sarebbe meglio che tu indossassi il vestito blu con le balze."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Oh, mamma, il vestito blu no! Non mi piace per niente: e poi anche figlia del giudice Chapkin e quella del Sovrintendente Delgado girano in blu. No, voglio mettere il vestito rosa chiaro."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Il vestito rosa chiaro! Tu apri bocca solo per contraddirmi... Starai molto meglio in blu, perch\u00E9 si intona col vestito del mio colore preferito: quello giallo paglierino."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ah, mamma, il giallo paglierino non vi dona affatto!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Non mi dona il giallo paglierino?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Non vi dona, ve lo assicuro, non vi dona: per il giallo paglierino ci vogliono gli occhi scuri."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Questa \u00E8 bella: e io forse non ho gli occhi scuri? Sono scurissimi. E bellissimi MARIA Ma non so proprio, mammina, perch\u00E9 mai vi sembra che la vostra cosa migliore siano gli occhi, poi... ANNA Ma senti che sciocchezze! Come possono non esserlo se quando leggo le carte pesco sempre la regina di fiori? Questa \u00E8 bella: e io forse non ho gli occhi scuri? Sono scurissimi. E bellissimi"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma non so proprio, mammina, perch\u00E9 mai vi sembra che la vostra cosa migliore siano gli occhi, poi... "
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma senti che sciocchezze! Come possono non esserlo se quando leggo le carte pesco sempre la regina di fiori?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma che fiori, mammina, il tuo stile \u00E8 molto pi\u00F9 da regina di cuori."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Stupidaggini| Lo fai solo per contraddirmi! Mai stata una regina di cuori. Guarda ora cosa le salta in mente! Una regina di cuori! Dio solo sa che roba \u00E8!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Dopo la loro uscita si apre una porta e"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "butta dentro della spazzatura. Da un\u0027altra porta entra Osip con una valigia sulla testa."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Dove devo andare?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Da questa parte, da questa parte."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Momento, fammi riposare un attimo. Che vita da somari! Quando si ha la pancia vuota tutti i carichi sembrano pesanti."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Allora dite un po\u0027: arriver\u00E0 presto il generale?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Quale generale?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Il vostro padrone, no?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Il padrone? Ma quale generale?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Perch\u00E9, non \u00E8 generale?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "\u00C8 generale, ma solo in un altro senso."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Ma conta di pi\u00F9 o di meno di un generale normale?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Di pi\u00F9."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Accidenti! Ecco perch\u00E9 \u00E8 nato tutto questo scompiglio."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Senti, vedo che sei un tipo sveglio, preparami qualcosa da mangiare."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Per voi non c\u0027\u00E8 ancora niente di pronto; quando si metter\u00E0 a tavola il vostro padrone, allora daranno da mangiare anche a voi."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Ma di roba cos\u00EC alla buona, che cosa c\u0027\u00E8?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Cavoli, semolino e pasticcio."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Cavoli, semolino e pasticcio, benissimo, porta tutto! E non farti troppi problemi, vedrai che manger\u00F2 lo stesso! Forza, portiamo via la valigia! C\u0027\u00E8 un\u0027altra uscita?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "S\u00EC. Insieme portano la valigia nella camera vicina."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ottime istituzioni. Apprezzo questa vostra abitudine di mostrare ai forestieri tutta la citt\u00E0. Nelle altre citt\u00E0 non mi hanno fatto vedere niente."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Nelle altre citt\u00E0, mi permetto di farvi notare, i responsabili della cittadinanza e i funzionari si occupano soprattutto del loro tornaconto"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Qui invece posso dirvi che non abbiamo altra preoccupazione se non quella di meritarci l\u0027attenzione dei superiori con un servizio corretto e zelante."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "La colazione era molto buona. Sono proprio sazio. Ma voi mangiate cos\u00EC tutti i giorni?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Preparata appositamente per il nostro gradito ospite."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "A me piace mangiare. In fondo si vive per cogliere i fiori del piacere. Come si chiamava quel pesce?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Baccal\u00E0, signore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Bac-ca- l\u00E0 Molto buono. Dov\u0027\u00E8 che abbiamo pranzato? Un ospedale,?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Esattamente, signore, alle opere pie."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Certo, certo. Ma i malati erano guariti? Mi sembra che ce ne fossero pochi."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ne sono rimasti una decina, non di pi\u00F9; e gli altri sono tutti guariti. \u00C8 cos\u00EC che \u00E8 organizzato da noi, c\u0027\u00E8 questo sistema. Da quando ho assunto io la direzione, vi sembrer\u00E0 addirittura incredibile, muoi\u2026ehm\u2026guariscono tutti come mosche. I malati non fanno in tempo a mettere piede in ospedale che sono gi\u00E0 bell\u0027e che guariti, e non grazie alle medicine, ma grazie all\u0027onest\u00E0 e all\u0027ordine."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Mi permetto di farvi notare quanto sono complesse le mansioni del capo di una citt\u00E0! Quanti problemi di ogni genere mi vengano sottoposti quotidianamente\u2026 insomma, anche l\u0027uomo pi\u00F9 intelligente di questo mondo avrebbe le sue brave difficolt\u00E0, ma, per grazia di Dio, tutto va per il meglio. Naturalmente, un altro sindaco baderebbe solo al proprio tornaconto, ma quanto a me, credetemi, persino quando sono a letto continuo a dire tra me e me: Signore, mio Dio, come posso adoperarmi affinch\u00E9 i miei superiori vedano il mio zelo e ne siano soddisfatti?... Che, poi, mi ricompensino o meno, naturalmente \u00E8 affar loro, ma almeno il mio cuore \u00E8 in pace."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Quando in una citt\u00E0 regna l\u0027ordine, le strade sono spazzate, i detenuti sono trattati bene, di ubriachi ce n\u0027\u00E8 pochi..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Cosa dovrei desiderare di pi\u00F9? Vi giuro che non ambisco ad alcuna onorificenza. Naturalmente l\u0027onorificenza seduce, ma in confronto alla virt\u00F9 \u00E8 tutto cenere e vanit\u00E0."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ma senti te questo fannullone, che razza di sviolinata! Dio deve avergli dato proprio un talento speciale!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "\u00C8 vero. Anch\u0027io, vi confesso, amo talvolta filosofeggiare: certe volte in prosa, ma di tanto in tanto mi scappa fuori anche qualche verso."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "\u00C8 giusto, \u00E8 proprio tutto giusto. E che osservazioni... Si vede che si \u00E8 dedicato alla scienza."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ditemi, vi prego: non c\u0027\u00E8 da voi qualche divertimento, qualche circolo dove si possa, per esempio, giocare a carte?"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Aha! Spara frecciatine, eh? Ma sappiamo bene a cosa mira!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Dio ce ne scampi! Qui di certe cose non se ne parla neanche."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Pensate che in vita mia non ho mai preso in mano un mazzo di carte: e non ho la minima idea di come si gioca. Non ce la faccio neppure a guardarle: e se anche, per puro caso, mi capita di vedere un re di quadri o roba del genere, mi prende una tale ripugnanza che mi metterei a sputare. Una volta, non so come, mi \u00E8 capitato, per divertire i miei bambini, di costruire un castello di carte; e poi me le sono sognate per tutta la notte, quelle maledette. Che Dio le abbia in gloria, ma come \u00E8 possibile sprecarci tanto tempo prezioso?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Sentilo, il mascalzone! Ma se proprio ieri mi hai pappato cento marchi!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "\u00C8 meglio che quel tempo lo si impieghi per il bene dello stato."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, no, non capite... Tutto dipende dal punto di vista da cui si considerano le cose: qualche volta il gioco \u00E8 molto seducente."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Consentitemi di presentarvi la mia famiglia: mia moglie e mia figlia."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Sono felice, signora, di avere il piacere impagabile di fare la vostra conoscenza."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E noi siamo ancora pi\u00F9 liete di conoscere una persona come voi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Perdonatemi, signora, ma \u00E8 esattamente il contrario: sono io il pi\u00F9 felice."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma no, non pu\u00F2 essere! Voi dite cos\u00EC per pura gentilezza. Vi chiedo umilmente di sedervi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Gi\u00E0 poter stare in piedi accanto a voi \u00E8 una grande gioia, ma se proprio me lo ordinate mi sieder\u00F2. Come sono felice di potere finalmente sedere accanto a voi."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Vi prego, non posso credervi... dopo la vita della capitale questa trasferta risulter\u00E0 per voi molto sgradevole."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Straordinariamente sgradevole. Abituato a vivere, comprenez vous, in societ\u00E0, tutto ad un tratto: locande sudicie... le tenebre dell\u0027ignoranza... Lo confesso, non fosse stato per questa evenienza che mi ricompensa di tutto..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Oh, quanto dovete avere sofferto!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Del resto, signora, questo \u00E8 per me un momento di immensa beatitudine."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Come \u00E8 possibile, signore, voi mi fate un onore troppo grande. Io non lo merito."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Perch\u00E9 non lo meritate? Voi, signora, lo meritate appieno."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Io sono una donna di provincia..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC, ma anche la provincia in fondo ha i suoi ruscelli, le sue colline... Beh, certo non si pu\u00F2 paragonarla alla Capitale. Ah, la Capitale! Quella \u00E8 vera vita! Voi, forse, crederete che io mi limiti a scribacchiare. Macch\u00E9, il direttore del dipartimento mi tratta come un amico. Viene l\u00EC, una pacca sulla spalla: \u00ABAllora, carissimo, andiamo a pranzo?\u00BB. Passo in ufficio giusto due minuti, il tempo di dire: \u00ABQuesto va fatto cos\u00EC, quest\u0027altro va fatto cosa\u00BB. Volevano farmi addirittura assessore di collegio, ma poi ho pensato: a che pro? E il custode mi vola dietro fin sulle scale: permettete, Ivan Aleksandrovi\u00E8, che vi pulisca gli stivali. Ma signori, perch\u00E9 state in piedi? Sedetevi, ve ne prego!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Per il mio grado posso ancora stare in piedi!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Staremo in piedi."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Non preoccupatevi per noi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Niente gradi, vi prego di sedervi. Non amo le cerimonie. Anzi, solitamente cerco di passare inosservato. Ma \u00E8 impossibile nascondersi, impossibile! Non faccio in tempo ad arrivare da qualche parte, che subito qualcuno salta su: \u00ABC\u0027\u00E8 qui Ivan Aleksandrovi\u00E8!\u00BB. Una volta mi hanno preso addirittura per un comandante in capo, i soldati mi hanno fatto il presentat-arm."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Non mi dite, che cose!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ormai mi conoscono dappertutto. Sono in amicizia con certe attrici carine... Ho scritto anche qualche piccolo vaudeville... Anche con gli scrittori mi vedo spesso. Con Pu\u0161kin siamo intimi. Quante volte mi capita di dirgli: \u00ABAllora, caro Pu\u0161kino, come va?\u00BB. E lui: \u00ABVa cos\u00EC, caro mio, come al solito\u00BB. Proprio un bell\u0027originale."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Cos\u00EC voi scrivete anche? Come deve essere bello essere uno scrittore. E probabilmente pubblicherete anche su qualche rivista..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC, pubblico anche su alcune riviste. Del resto ho scritto moltissime opere: Le nozze di Figaro, Robert le Diable, la Norma... Non mi ricordo nemmeno tutti i titoli. E tutto per caso: io non avevo mica l\u0027intenzione di mettermi a scrivere, \u00E8 stata la direzione teatrale che mi fa: \u00ABPer favore, amico, scrivici qualcosa\u00BB. In una sola sera, ho scritto tutto, dall\u0027a alla zeta. Ho una straordinaria facilit\u00E0 di pensiero. Tanto per dirne una, tutto quello che \u00E8 uscito con la firma del barone Brambeus, la Fregata della Speranza e il Telegrafo moscovita ... l\u0027ho scritto tutto io."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Volete dirmi dunque che Brambeus eravate voi?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma certamente. Ah, e poi correggo i versi a tutti."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Allora probabilmente anche Jurij Miloslavskij l\u0027avete scritto voi?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC, \u00E8 una mia opera."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "L\u0027avevo intuito."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma, mammina, ma se c\u0027\u00E8 scritto che \u00E8 un\u0027opera del signor Zagoskin."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ecco: lo sapevo che ti saresti messa a contraddirmi anche qui."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah, s\u00EC, \u00E8 vero, quello \u00E8 davvero di Zagoskin, ma c\u0027\u00E8 anche un altro Jurij Miloslavskij, e quello \u00E8 mio."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Quello che ho letto io dev\u0027essere senz\u0027altro il vostro. Com\u0027\u00E8 scritto bene!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Io, lo confesso, vivo di letteratura. La mia casa \u00E8 la prima di Capitale. Chi non la conosce? \u00ABLa casa di Chlestakov\u00BB. Ve lo chiedo di cuore, signori, se passerete da Capitale, venite a farmi visita. Do anche dei balli, sapete."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ah, i balli di Capitale."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Chiss\u00E0 che classe, e che lusso!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Non si pu\u00F2 nemmeno descrivere.! La minestra, gi\u00E0 pronta nella zuppiera, arriva direttamente in piroscafo da Parigi. Non passa giorno che non sia invitato a qualche ballo. E abbiamo organizzato anche un nostro circolo per il whist. Il ministro degli esteri, il console francese, il console tedesco e io. E ci sfiniamo talmente, a furia di giocare... cose da non credere. Quando attraverso il dipartimento sembrava un terremoto: tutti ad agitarsi e a tremare come foglie. Persino il consiglio di stato mi teme. D\u0027altronde, che ci posso fare? Io sono fatto cos\u00EC! Non guardo in faccia a nessuno... Lo dico sempre: solo io mi conosco, solo io. Sono dovunque, dovunque. A palazzo ci vado ogni giorno. Domani mi faranno subito feldmaresc..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Vo-vo-vo... strenza, Eccellenza, non vorreste fare un riposino? Qui c\u0027\u00E8 la vostra camera pronta con tutto quello che pu\u00F2 servirvi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Riposarsi? Che spreco di tempo. Ma accetto con piacere: sono pronto a riposarmi. La vostra colazione, signori, era davvero buona... sono contento, sono contento. Bac-ca-l\u00E0! Bac-ca-l\u00E0! Entra nella camera adiacente, seguito dal sindaco."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Questo s\u00EC che \u00E8 un uomo."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ecco cosa significa essere un vero uomo."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Mai visto in vita mia un individuo cos\u00EC importante: ancora un po\u0027 e morivo di paura. Secondo voi a gradi come \u00E8 messo?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Penso che sia poco meno che generale."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Bazzecole, un generale non gli lustra nemmeno le scarpe! E se non pu\u00F2 essere altro che un generale, ebbene: allora sar\u00E0 il generalissimo in persona. Avete sentito come ha trattato persino il Consiglio di Stato?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Mette semplicemente paura. E non so nemmeno io perch\u00E9. Noi non portiamo nemmeno la divisa. E se davvero, come si sveglia, ti spedisce una denuncia alla Capitale? Dobbiamo andare a sistemare i nostri uffici! Signore, addio! Escono."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ah, che giovane incantevole!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "E com\u0027\u00E8 carino!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Basta giudicare dai modi, cos\u00EC raffinati! Ah, non ci vuol molto a capire che viene da Capitale. Le maniere e tutto il resto... Ah, che bellezza! Mi piacciono da morire i giovanotti cos\u00EC! Vado semplicemente in estasi. Anch\u0027io, per\u00F2, devo essergli piaciuta molto: ho notato che continuava a guardarmi."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma, mammina: era me che guardava."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Sciocchezze del tutto fuori luogo."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma \u00E8 la verit\u00E0."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma senti un po\u0027! Che Dio ci fulmini se questa non ha qualcosa da ridire! E cos\u0027aveva da guardarti? Per quale motivo avrebbe dovuto guardare te?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "\u00C8 vero, mammina: continuava a guardarmi. Sia quando ha cominciato a parlare di letteratura, e l\u00EC mi ha guardata, sia poi, quando ha raccontato che giocava a whist con i consoli, anche allora mi ha guardata."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Beh, s\u00EC, forse giusto una volta o due volte, ma cos\u00EC per dare nell\u2019occhio e non far vedere che guardava solo me\u2026 \u00ABSuvvia\u00BB, si sar\u00E0 detto, \u00ABguardiamo un po\u0027 anche quella\u00BB."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ssh... Ssh..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Che c \u00E8?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ho paura di aver sbagliato a farlo bere. E se anche solo la met\u00E0 di quello che ha detto fosse vero? E come potrebbe non essere vero? Quando uno beve tira fuori tutto: quel che c\u0027\u00E8 nel cuore arriva sulla lingua. Che abbia un po\u0027 esagerato, questo \u00E8 normale. Del resto un discorso senza qualche frottola non si pu\u00F2 nemmeno immaginare. Gioca con i ministri.. va a palazzo... Sul serio, pi\u00F9 ci penso... Lo sa il diavolo cosa mi frulla per la testa: \u00E8 come se stessero per impiccarmi."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Io invece non mi sono sentita per nulla in soggezione: in lui ho visto solo un giovane colto e di mondo, una persona di classe superiore; che m\u0027importa dei suoi gradi?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma cosa sto a parlare con voi!... Questa \u00E8 una ben strana situazione! Non mi sono ancora rimesso dallo spavento. Jean Dupont, chiama il Commissario Sven. Almeno fosse una persona imponente, e invece \u00E8 minuto, magrolino, come si fa a capire chi \u00E8? Perlomeno un militare comunque si fa riconoscere, ma lui, con questo fracchettino... Una mosca con le ali tarpate, ecco cosa sembra. Ma prima, alla locanda, ha opposto una bella resistenza! Alla fine, per\u00F2 si \u00E8 arreso. E ha parlato anche pi\u00F9 del necessario. Si vede che \u00E8 alle prime armi."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Vieni qua, carissimo!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ssh! Allora? Cosa c\u0027\u00E8?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Dorme?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Non ancora, si \u00E8 steso un pochino."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Basta! Amico mio, ti hanno dato da mangiare bene?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "S\u00EC, grazie di cuore, ho mangiato benissimo."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Dimmi: dal tuo padrone ne vengono tanti, di conti e principi?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Cosa devo dire? Se gi\u00E0 adesso mi hanno dato da mangiare bene, vuol dire che dopo mi tratteranno ancora meglio. S\u00EC, ci vengono anche dei conti."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Com\u0027\u00E8 carino il tuo padrone!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E che grado ha il tuo padrone?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Il solito, signora."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E dai con le domande stupide! Dio mio! Cos\u00EC, poi, io non riesco a dire nemmeno una parola sulle cose che contano. Dimmi, amico, com\u0027\u00E8 il tuo padrone? Severo? Gli piace dare qualche strigliata ogni tanto? Eh?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "S\u00EC, \u00E8 uno che ama l\u0027ordine. Esige che tutto sia in regola."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma come mi piace la tua faccia! Devi essere proprio una brava persona, tu! E allora..."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Senti, ma il tuo padrone porta la divisa, o..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Volete piantarla una buona volta, brutte chiacchierone? Qui si tratta della vita di un uomo... Beh, amico, mi piaci davvero molto. Durante il viaggio non ti dar\u00E0 fastidio, credo, bere un bicchierino di t\u00E8 in pi\u00F9; adesso fa proprio freddino. Eccoti un paio di marchi per il t\u00E8."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Grazie di cuore, signore. Che Iddio vi conceda la salute; avete aiutato un pover\u0027uomo."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Va bene, va bene, sono contento anch\u0027io. Ma dimmi,..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Senti, che tipo d\u0027occhi preferisce il tuo padrone?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "E, il naso\u2026 che naso preferisce l\u2019ispettore? Che bel nasino ha il tuo padrone!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma lasciatemi parlare! Ascolta, amico, dimmi, per favore: qual \u00E8 la cosa che interessa di pi\u00F9 al tuo padrone, che cos\u0027\u00E8 che gli piace di pi\u00F9 quando \u00E8 in viaggio?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Dipende un po\u0027 da quello che gli capita. Pi\u00F9 di tutto gli piace che lo accolgano bene, che l\u0027ospitalit\u00E0 sia buona."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Buona?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "S\u00EC, buona. Per esempio: io che cosa sono? Un servo; eppure, controlla che anch\u0027io sia trattato bene. Ve lo giuro, certe volte andiamo da qualche parte e: \u00ABAllora, Osip, ti hanno trattato bene?\u00BB - \u00ABMalissimo, Vossignoria!\u00BB - \u00ABAh, dice, questo, Osip, non \u00E8 un buon ospite. Ricordamelo quando arriviamo\u00BB - \u00ABAh, penso io, che vada con Dio, io sono un uomo semplice\u00BB."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Bene, bene, sei uno che parla a proposito. Ti ho dato due marchi per il t\u00E8, giusto? Ecco, prendi pure questo per le ciambelle."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Ma perch\u00E9 vi disturbate, Vossignoria? Berr\u00F2 alla vostra salute."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Vieni da me, Osip, quando ne vuoi degli altri!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Osip, carissimo, dai un bacino al tuo padrone! "
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ssh! Non fate rumore, per l\u0027amor di Dio! Andatevene! Smettetela, adesso!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Andiamo, Mariuccia! Ti devo rivelare una cosa del nostro ospite che ho notato e che posso dirti solo t\u00EAte-\u00E0-t\u00EAte."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ne avranno da raccontarsi, adesso! Ma prova solo ad ascoltarle e dovrai metterti i tappi alle orecchie. Escono le due donne."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ssh! Sentili come pestano i piedi, gli orsi! Piombano dentro che sembra che stiano scaricando quaranta sacche di sabbia! Dove diavolo credete di andare?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Ci \u00E8 stato ordinato..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ssh! Sei peggio di una cornacchia! Ci \u00E8 stato ordinato! E ringhia come se fosse in un barile! Beh, amico, vai pure di l\u00E0 a preparare quello che serve al tuo padrone. Chiedi pure tutto quello che c\u0027\u00E8 in casa. E voi - mettetevi sul terrazzino e non muovetevi di l\u00EC! E non lasciate entrare in casa nessun estraneo,"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Nessuno!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "soprattutto i mercanti!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Mercanti? Manco uno!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Se ne farete entrare anche uno solo, vi... Appena vedete che arriva qualcuno con una supplica, o anche senza supplica, ma dalla cui faccia si capisce che potrebbe voler presentare una supplica contro di me, cacciatelo subito via a pedate! Cos\u00EC! Come Dio comanda. vete capito?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Nessuno nemmeno i mercanti, Sindaco!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ssh... ssh... Esce in punta di piedi dietro Sven"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Per l\u0027amor di Dio, signori, su, su, in cerchio, e siate pi\u00F9 ordinati, che diamine! Che Dio lo assista: a palazzo va, e striglia il Consiglio di Stato! In linea, in linea. E sull\u0027attenti, assolutamente! Voi, Bob\u00E8inskij, correte da questa parte e voi mettetevi l\u00EC. Bob\u00E8inskij si sposta correndo in punta di piedi."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Come volete, Giudice, ma dobbiamo organizzare qualcosa."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Ma che cosa?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Beh, \u00E8 chiaro che cosa."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Allungargli qualcosina?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Beh, magari anche, s\u00EC: allungargli qualcosina."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Ma siete matto, \u00E8 pericoloso! E se si mette a gridare: \u00ABSono un servitore dello stato\u00BB?! Meglio farla passare come un\u0027offerta da parte della nobilt\u00E0 per un qualche monumento..."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Oppure facciamo cos\u00EC: diciamo che alla posta sono arrivati questi soldi e non si sa di chi siano."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "S\u00EC, attento che non sia lui a spedirvi per posta da qualche parte!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ascoltatemi: non \u00E8 cos\u00EC che si fanno queste cose in uno stato ben organizzato. Cosa stiamo a fare qui tutti come una specie di squadrone? Bisogna che ci si presenti uno a uno. Una volta che si \u00E8 in privato, \u00E8 pi\u00F9 facile... fare le cose come si deve: voglio dire, senza orecchie indiscrete. Nei regimi ben strutturati \u00E8 cos\u00EC che si fa. Direi, Giudice Chapkin, che potreste entrare voi per primo."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Eh no, proprio in tal senso \u00E8 meglio che cominciate voi: il nostro illustre ospite ha mangiato il pane della vostra pia istituzione."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Allora \u00E8 meglio che vada Lukasz Meyer, in quanto educatore della giovent\u00F9."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Non posso, signori, non posso. La colpa \u00E8 dell\u0027educazione che ho ricevuto... Lo confesso: se una persona superiore a me anche di un solo grado mi rivolge la parola, ecco, mi perdo completamente d\u0027animo e mi si ingarbuglia la lingua. No, signori, dispensatemi, davvero, dispensatemi!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Allora, caro Giudice Chapkin, tocca proprio a voi. Avete una parlantina che sembra uscire direttamente dalla bocca di Cicerone."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Ma guarda un po\u0027 che cosa inventate! Solo perch\u00E9 qualche volta mi sono un po\u0027 accalorato parlando della mia mimetica o di un segugio..."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "No, non \u00E8 solo questione di segugi, voi sapreste parlare anche dalla cima della torre di Babele... No, Giudice Chapkin, non ci abbandonate, voi, il nostro padre!... No, Giudice Chapkin!"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Lasciatemi in pace, signori! In quel momento si sentono dei passi e qualche colpo di tosse provenire dalla camera di Chlestakov. Tutti, accalcandosi, si gettano verso la porta per uscire, finendo per schiacciare qualcuno. Si sentono delle esclamazioni smorzate. Si sente ancora qualche esclamazione: ahi, ohi!, finch\u00E9 finalmente tutti escono e la camera rimane vuota."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "A quanto pare mi sono fatto una dormita coi fiocchi. Certo che qui te la puoi spassare a meraviglia: ho un tale cerchio alla testa\u2026. Adoro la cordialit\u00E0; se, poi, mi accolgono con cuore sincero, e non soltanto per interesse, meglio ancora. La figlia del sindaco decisamente si fa notare, e anche la mamma \u00E8 un tipino che ancora si potrebbe... Questa vita mi piace, ecco: mi piace."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Dio mio, aiutami tu; mi tremano anche le ginocchia! Ho l\u0027onore di presentarmi: sono il giudice del tribunale di questa provincia, assessore di collegio Edward Chapkin."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Prego, accomodatevi. Cos\u00EC voi qui sareste il giudice?"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Eletto per un triennio per mandato della nobilt\u00E0: carica che continuo a ricoprire."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Il giudice \u00E8 un mestiere vantaggioso?"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Per averlo fatto per tre trienni sono stato proposto per la Croce al Merito di quarta classe con l\u0027approvazione dei miei superiori. Questi soldi che ho in mano bruciano addirittura!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "A me piace la Croce al Merito. Gi\u00E0 il Cavalierato di terza classe non \u00E8 pi\u00F9 la stessa cosa."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Dio mio, non so nemmeno pi\u00F9 dove mi trovo. Mi sembra di camminare sui carboni ardenti."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Cosa avete in mano?"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Niente, signore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come niente? Vi sono caduti dei soldi..."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Niente di tutto questo, signore. Ges\u00F9! Sono gi\u00E0 sotto processo! Vedo gi\u00E0 le guardie che vengono a prendermi dalla capitale!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah, \u2026 sentite un po\u2019\u2026"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Finito, tutto finito: sono rovinato! Sono rovinato!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Non potreste darmeli in prestito..."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Certamente, ma certamente... con grande piacere. Forza, su, coraggio! Madre Santissima, ora pro nobis!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "In viaggio ho speso tutto: oggi una cosa, domani l\u0027altra... Comunque ve li mander\u00F2 non appena sar\u00F2 giunto in campagna."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Ma vi prego! Come potrei...! \u00C8 un onore per me... Naturalmente, le mie povere forze sono quel che sono, ma con tutto il mio zelo e la solerzia verso i superiori... cercher\u00F2 di meritare... Non oso disturbarvi oltre con la mia presenza. Avete qualche ordine?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Quale ordine?"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Intendo \u2026 qualche \u2026 ordine da impartire al nostro tribunale provinciale?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E perch\u00E9? Al momento non ravviso alcuna necessit\u00E0."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Bene, la citt\u00E0 \u00E8 nostra!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che brava persona questo giudice!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Ho l\u0027onore di presentarmi: consigliere di corte Jean Dupont, Ufficiale Postale."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Siate il benvenuto! Amo molto la buona compagnia. Sedetevi. Voi vivete qui, vero?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Proprio cos\u00EC, signore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Mi piace molto la vostra cittadina. \u00C8 vero che non c\u0027\u00E8 molta gente in giro, dopotutto non \u00E8 mica la capitale. Non \u00E8 forse vero che non \u00E8 la capitale?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "\u00C8 la pura verit\u00E0."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Perch\u00E9 vedete, \u00E8 solo nella capitale che si trova il bon ton, e non ci sono i soliti cafoni. Cosa ne pensate, non \u00E8 cos\u00EC?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Perfettamente, signore. Ma davvero non \u00E8 per niente superbo: s\u0027informa su tutto."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Eppure, anche in una piccola cittadina si pu\u00F2 vivere felici."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Come lei ci insegna, signore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Infatti! In fondo di cosa abbiamo bisogno? Sssss\u2026"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Ssooooldi \u2026 ?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "\u2026 solo di essere rispettati e amati sinceramente. Non \u00E8 cos\u00EC?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "\u00C8 esattamente cos\u00EC, signore, esattamente cos\u00EC: solo di essere rispettati e amati sinceramente."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ve lo dico di tutto cuore: sono felice che la pensiate come me. Sapete, mi \u00E8 capitata una cosa strana: in viaggio ho speso tutto quel che avevo. Non \u00E8 che potreste prestarmi un trecento marchi?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "E me lo chiedete? Per me \u00E8 un\u2019immensa fortuna. Tenete, prego. Consideratemi al vostro servizio con tutta l\u0027anima. Non osando importunarvi oltre con la mia presenza... Avete qualche osservazione da farmi a proposito dell\u0027ufficio postale?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, nessuna. L\u0027Ufficiale Postale si inchina ed esce."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Servizievole: \u00E8 cos\u00EC che mi piacciono le persone."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Ho l\u0027onore di presentarmi: consigliere titolare Lukasz Meyer, provveditore scolastico."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Benvenuto. Sedete, sedete. Gradite un sigaro?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Eccoti bell\u0027e che sistemato! E chi se l\u0027aspettava! Prenderlo o non prenderlo? Questo \u00E8 il dilemma."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Su, prendetelo: \u00E8 buonino, ve\u0027! Naturalmente, nulla a che vedere con quelli della Capitale. Certi sigaretti da venticinque marchi la scatola, roba da leccarsi le dita dopo averli fumati. Ecco, prego, accendete. Lukasz Meyer prova a fumare, tremando tutto."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma non da quella parte!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Al diavolo tutto quanto! Che disastro, maledetta timidezza!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "A quanto vedo non siete un cultore del sigaro. Io, invece, lo confesso, ho questa debolezza. E lo stesso vale per il gentil sesso: non riesco a rimanere indifferente. E voi? Cosa preferite, le brune o le bionde? Lukasz Meyer non sa assolutamente che cosa dire."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, ditemelo sinceramente, le brune o le bionde?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Non oso saperlo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, no, non giocate a nascondino! Voglio assolutamente sapere i vostri gusti."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Oso riferire... Ah, non so nemmeno io quello che dico."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "A-ha, non volete dirmelo! Sono sicuro che qualche morettina vi ha dato del filo da torcere. \u00C8 cos\u00EC? Ditemi la verit\u00E0. Lukasz Meyer rimane muto."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah! siete diventato rosso, vedete! Ma perch\u00E9 non parlate?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Sono intimidito, ill... vostra ecc... graz... Rovinato da questa maledetta lingua: ro-vi-na-to!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Siete intimidito? Lo capisco: effettivamente nei miei occhi c\u0027\u00E8 qualcosa che incute un certo timore. Per lo meno, nessuna donna riesce a sostenerli; non \u00E8 cos\u00EC?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Proprio cos\u00EC, signore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Sapete, mi \u00E8 successo un fatto strano: sono rimasto completamente al verde. Non potreste farmi un prestito di trecento marchi?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Bella roba, se non li ho! Ci sono, ci sono."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Vi ringrazio infinitamente."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Non oso imporvi oltre la mia presenza."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Arrivederci."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Beh, Dio sia ringraziato! Speriamo che non gli venga in mente di farmi una visitina nelle classi!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ho l\u0027onore di presentarmi: consigliera di corte Felipa Delgado, sovrintendente alle opere pie."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Buongiorno, vi prego umilmente di sedervi."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ho avuto il privilegio di accogliervi personalmente e di accompagnarvi durante la visita agli enti sottoposti alla mia amministrazione."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah, s\u00EC! Ricordo: la colazione. Ottima davvero."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Lieto di dedicare tutti i miei sforzi al servizio della nazione."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ahim\u00E8, lo confesso: ho un vero debole per la buona cucina. Ma ditemi, vi prego: non \u00E8 che da ieri siete diventata un pu\u00F2 pi\u00F9 alto di statura? O mi sbaglio?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "\u00C8 molto probabile. Vogliate credermi, non mi risparmio in nulla e svolgo il mio servizio con il massimo zelo. Il nostro Ufficiale Postale, invece, non fa assolutamente niente: le pratiche se ne stanno l\u00EC nel disordine pi\u00F9 totale, le spedizioni sono sempre in ritardo... abbiate la compiacenza di indagare voi stesso a questo proposito. Non parliamo poi del giudice, quello che \u00E8 appena stato qui: si occupa solo di lepri, tiene i suoi cani nei locali delle udienze, e anche la sua condotta, sinceramente... non vorrei dirlo, ma \u00E8 per il bene della nazione, anche se \u00E8 mio parente e amico... s\u00EC, insomma, la sua condotta \u00E8 inqualificabile: c\u0027\u00E8 qui un possidente, Bob\u00E8inskij, che anche voi avete potuto vedere; bene: come questo Bob\u00E8inskij esce di casa, subito lui se ne va da sua moglie, se volete posso anche giurarlo... Provate a guardare i bambini: non ce n\u0027\u00E8 uno che assomigli a Bob\u00E8inskij, ma tutti, perfino la bambina pi\u00F9 piccola, sono il giudice spiaccicato."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma guarda un po\u0027 tu! Non l\u0027avrei mai pensato!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "E il provveditore scolastico? Come i superiori abbiano potuto affidare a lui questo incarico, \u00E8 un mistero. \u00C8 peggio di un giacobino, inculca nei nostri giovani idee cos\u00EC nefande da non poterle nemmeno riferire. Non sarebbe meglio che vi mettessi tutto per iscritto?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Va bene, mettetemelo per iscritto. Mi far\u00E0 molto piacere. Nei momenti di noia mi piace molto leggere qualcosa di divertente... Come vi chiamate? Continuo a dimenticarmelo."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Felipa Delgado."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah, s\u00EC, Delgado. E voi, ditemi, per favore, avete dei bambini?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ma certo, signore: cinque. Due sono gi\u00E0 grandi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma cosa mi dite: gi\u00E0 grandi! E come sono... sono anche loro...?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "La vostra signoria desidera sapere come si chiamano?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC, come si chiamano?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Carlito, Luisito, Richito, Danielito e Carmencita."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Bei nomi."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Non osando disturbarvi oltre con la mia presenza, distogliendovi dai sacri doveri..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma quale disturbo. Le vostre storie sono un vero spasso.. Ehi, voi! Come vi chiamate? Continuo a dimenticare il vostro nom."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Felipa Delgado."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Una cortesia, Felipa Delgado: mi \u00E8 capitata una cosa strana: in viaggio ho speso tutto quel che avevo. Non avreste un quattrocento marchi da prestarmi?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Certamente."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Non mi dite, neanche a farlo apposta. Grazie, grazie di cuore."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Ho l\u0027onore di presentarmi finalmente: P\u00EBtr Bob\u00E8inskij figlio di Ivan, abitante di questa citt\u00E0. Possidente."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come va il naso?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Bene, ringraziando Dio! Vi prego di non preoccuparvi: \u00E8 come nuovo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Benissimo, allora. Ne sono lieto... Avete dei soldi?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Dei soldi? In che senso?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Da prestarmi. Un migliaio di marchi."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Mille marchi? Lo giuro su Dio, non li ho. Ahim\u00E8: i miei soldi sono depositati nella cassa di mutuo soccorso."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Beh, se non avete mille marchi, almeno un centinaio."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "In tutto ho quaranta banconote, ah nel portafoglio altri venticinque marchi in tutto."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Guardate meglio, Bob\u00E8inskij! Magari nella vostra tasca, dalla parte destra, c\u0027\u00E8 uno strappo: di sicuro ci sar\u00E0 qualcosa infilato dentro."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Macch\u00E9, non c\u0027\u00E8 niente nemmeno nello strappo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Beh, non importa, ho chiesto solo cos\u00EC. Vada per i sessantacinque marchi. Fa lo stesso."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Posso avere l\u0027ardire di chiedere il vostro intervento in una questione molto delicata? Il mio figlio maggiore, col vostro permesso, \u00E8 nato fuori dal matrimonio."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Cio\u00E8, per modo di dire, nel senso che l\u0027ho generato proprio come se fosse stato all\u0027interno del matrimonio, e in seguito ho regolato tutto con il legittimo vincolo matrimoniale. Cos\u00EC adesso, se posso ardire, vorrei che egli fosse completamente, cio\u00E8 legalmente, figlio mio, e che si chiamasse come me: Bob\u00E8inskij."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Va bene, che si chiami pure Bob\u00E8inskij!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Non vi avrei disturbato, ma mi dispiace perch\u00E9 ha del talento. \u00C8 un ragazzino cos\u00EC... mi d\u00E0 delle grandi speranze: conosce a memoria ogni sorta di poesie e se gli capita in mano un coltellino, in un attimo fa delle piccole carrozzelle, cos\u00EC bene che sembra un prestigiatore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Va bene, va bene: vedr\u00F2 cosa posso fare, ne parler\u00F2... spero... Sistemeremo tutto, s\u00EC, s\u00EC."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "E poi avrei un\u0027umilissima supplica."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "A che proposito?"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Vi chiedo umilmente, quando arriverete a Capitale dite a tutte le varie autorit\u00E0 che incontrerete laggi\u00F9, senatori, o ammiragli, che, ecco, vostra eccellenza, o vostra eminenza, in quella tale cittadina vive P\u00EBtr Bob\u00E8inskij. Dite proprio cos\u00EC: vive P\u00EBtr Bob\u00E8inskij."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Benissimo."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "E anche se capitate dal sovrano, ditegli cos\u00EC: vostra altezza imperiale, in quella tale citt\u00E0 vive P\u00EBtr Bob\u00E8inskij."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Benissimo."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Scusatemi se vi ho importunato con la mia presenza."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Di niente,.\u00C8 stato un piacere. Li accompagna alla porta."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ho come l\u0027impressione che mi prendano per un uomo di stato. Certo che ieri ho tirato di quelle cannonate... Che branco di sciocchi! Scriver\u00F2 tutto al mio scribacchino in Capitale. Lui scrive qualche articoletto: ne tirer\u00E0 fuori una cosina divertente! Ehi, Osip! dammi carta e inchiostro! Peraltro questi funzionari sono brave persone: \u00E8 stato bello da parte loro darmi tutti questi soldi in prestito: trecento marchi del giudice; trecento dell\u0027Ufficiale Postale, seicento, settecento, ottocento... questa qui \u00E8 tutta unta, che schifo! Ottocento, novecento!... O-ho! Siamo oltre i mille... ora s\u00EC che vorrei sfidare quel capitano a carte!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Allora, babbeo, lo vedi come mi trattano qua!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Dio sia ringraziato, lo vedo! Solo, volete sapere una cosa, Chlestakov?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che cosa?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Andiamocene di qua. Vi giuro che \u00E8 ora."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che sciocchezza! E perch\u00E9?"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Perch\u00E9 s\u00EC. Che Dio li abbia tutti in gloria! Per due giorni ve la siete spassata? Bene: adesso diamoci un taglio. Che v\u0027importa, di quelli l\u00EC? Meglio filare. Non si sa mai: potrebbe arrivare qualcun altro. In nome di Dio, Chlestakov! Avete visto che cavalli? Voleremmo via in un baleno!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, d\u00E0i, voglio stare qui ancora un pochino. Possiamo partire domani."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Ma perch\u00E9 domani? In nome di Dio, andiamo! Anche se vi tributano tutti questi onori, meglio filare al pi\u00F9 presto... Vi hanno preso per qualcun altro, e, poi, vostro padre si arrabbier\u00E0 perch\u00E9 avete tardato tanto... Sul serio, e poi sarebbe una partenza alla grande! Hanno di quei cavalli..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E va bene. Spedisci solo prima questa lettera, E di\u0027 ai cocchieri che dar\u00F2 loro un rublo per uno, ma che corrano. E che il trattamento sia quello dei corrieri! E che cantino, anche! Gi\u00E0 mi immagino le risate di Trjapi\u00E8kin..."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Far\u00F2 portare la lettera dall\u2019Ufficiale Postale, signore, io \u00E8 meglio che vada a preparare i bagagli, per non perdere tempo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Va bene, prima per\u00F2 portami una candela. Osip porta la candela. Chlestakov sigilla la lettera. Intanto si sente frastuono. Poi d\u00E0 la lettera a Osip Il frastuono aumenta"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che cosa succede, Osip? Che cos\u0027\u00E8 questo rumore? Entra Sven. Osip si nasconde."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Signore, in quanto capo delle forze di questa citt\u00E0, ci appelliamo alla tua benevolenza, signore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che cosa volete?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Imploriamo umilmente Vostra Grazia."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Cosa desiderate?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Non rovinateci, signore! Noi agenti siamo maltrattati senza alcuna colpa."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Chi vi opprime?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Sempre lui, il sindaco. Non c\u2019\u00E8 mai stato un sindaco cos\u00EC, mai. Ci offende cos\u00EC tanto, e cos\u00EC tanto, che non ho parole. Siamo col cappio al collo, siamo i suoi cagnolini al guinzaglio. Non \u00E8 un uomo giusto. Viene l\u00EC, ti prende per la barba e fa: \u00ABAttento, tartaro!\u00BB. Lo giuro davanti a Dio! Come se gli avessimo mai mancato di rispetto; e invece abbiamo sempre obbedito a tutti i suoi ordini: mica ci opponiamo, non passa giorno senza che pretenda qualcosa. Una volta ci manda a prelevare la merce migliore dai negozi senza pagare: \u201CAh, questa stoffa mi piace,\u201D dice, \u201Cportatela a casa mia.\u201D Cinquanta braccia di tessuto! Poi obbliga i negozianti a mandare regali a sua moglie e alla figlia. Per lui \u00E8 sempre troppo poco!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Davvero? Ah, che farabutto!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Giuro! Un sindaco cos\u00EC non se lo ricorda nessuno. Noi cerchiamo di evitare, ma non possiamo fare molto\u2026 I mercanti appena lo vedono arrivare, via!, devono nascondere tutto quello che hanno in bottega. E mica solo le cose pi\u00F9 raffinate, macch\u00E9: anche le porcherie: prugne marce rimaste l\u00EC per sette anni, lui se ne riempie le tasche. Il giorno di sant\u0027Antonio, che \u00E8 il suo onomastico, figurarsi, gi\u00F9, a portargli roba di tutti i tipi. Pensi che non ha pi\u00F9 bisogno di niente? Ma no, bisogna dargliene ancora: e a sant\u0027Onofrio s\u2019inventa che \u00E8 di nuovo il suo onomastico. E noi a portargli i doni."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma \u00E8 proprio un brigante!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Lo giuro davanti a Dio! E prova tu a contraddirlo: ti spedisce a fare le mansioni pi\u00F9 schifose... Se ti rifiuti, ti minaccia: non ti infligger\u00F2 nessuna pena corporale, e nemmeno ti torturer\u00F2, perch\u00E9, la legge me lo vieta; tu per\u00F2, caro mio, finirai a mangiare aringhe!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah, che mascalzone! Dovrebbe essere mandato in Siberia!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Che vada dove decide Vostra Grazia, per noi va bene tutto, basta che stia lontano da noi! Se ci aiuterete i doni che rubiamo dai mercanti li porteremo a voi: ecco prendete questo zucchero e questo vino!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, non pensateci neanche: io non accetto mai tangenti. I prestiti s\u00EC, quelli li posso accettare, se voi voleste prestarmi un trecento marchi \u2026"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Con piacere, Ma perch\u00E9 trecento! Ecco, prendetene cinquecento, purch\u00E9 ci aiuti!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come volete, sul prestito non ho niente da dire: li accetto."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Solo, ci tengo, tenete anche questo piccolo vassoio."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E va bene, vada anche per il vassoietto."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "E anche lo zucchero..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah, no: io non accetto nessun regalo..."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Vostra grazia! Perch\u00E9 non lo prendete? In viaggio tutto pu\u00F2 far comodo. Date qua lo zucchero e il vino! Date, date! Tutto pu\u00F2 far comodo. Che cos\u0027avete l\u00EC? Una corda? Anche quella, date, date! Anche la corda in viaggio pu\u00F2 servire: se si rompe il carro o qualche altra cosa, con la corda si pu\u00F2 legare."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Eccellenza, fateci la grazia: se voi non ascoltate la nostra supplica, non sappiamo pi\u00F9 che cosa fare. Tanto vale legarsi un cappio al collo."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Certamente, certamente. Far\u00F2 tutto quello che posso. Sven esce"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ah!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Perch\u00E9 tanto spavento, signorina?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "No, non sono spaventata."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Vogliate credermi, mademoiselle, sono molto lusingato che abbiate visto in me una persona che... oso anzi chiedervi: dove volevate andare?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Veramente, non andavo da nessuna parte. Pensavo che ci fosse la mamma qui..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, ditemi, vi prego: perch\u00E9 non andavate da nessuna parte?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Vi ho disturbato. Vi stavate occupando di affari importanti."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Voi non mi disturbate affatto: questo non \u00E8 proprio possibile. Non c\u0027\u00E8 affare importante che valga i vostri occhi..."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Parlate come si parla a Capitale."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "\u00C8 la vostra grande bellezza che mi suggerisce le parole. Posso essere tanto fortunato da offrirvi una sedia? Ma no, quale sedia, per voi ci vorrebbe un trono."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Veramente non so... Dovrei andare."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che bel fazzoletto avete!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "State scherzando, volete solo prendervi gioco di una ragazza di provincia."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come vorrei, signorina, essere quel fazzoletto, per abbracciare la vostra guancia liliale!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Liliale? Come parlate bene signorino\u2026 Io nemmeno capisco proprio di che cosa stiate parlando: ma quale fazzoletto... oggi il tempo \u00E8 cos\u00EC strano."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "La vostra bocca, signorina, \u00E8 meglio di qualsiasi tempo."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Voi dite cos\u00EC a tutte... Vi pregherei piuttosto di scrivermi qualche verso per ricordo, sul mio album. Voi, certamente, ne conoscete molti."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Signorina, per voi farei qualunque cosa. Chiedete, che versi volete?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Versi qualsiasi, basta che siano belli"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "\u2026 s\u00EC!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "e nuovi!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma quali versi! Io ne conosco molti."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ditemelo voi: quali mi scrivereste? Amo tanto la poesia..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E io ne so di tutti i tipi. Se vi piace potrei scrivervi: \u00ABO tu, uomo, che nel dolore invano contro Dio imprechi...\u00BB, o anche altri... adesso non riesco a ricordarmeli. Del resto, bando alle ciance. E tempo che vi dichiari il mio amore, che il vostro sguardo... "
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Amore! Io non capisco la parola amore... non ho mai saputo che cos\u0027\u00E8 l\u0027amore..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Perch\u00E9 allontanate la vostra sedia? Staremo meglio vicini, l\u0027uno accanto all\u0027altra..."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Perch\u00E9 poi tanto vicini? Anche lontani \u00E8 lo stesso."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "E perch\u00E9 dunque lontani? \u00C8 lo stesso anche vicini."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma perch\u00E9 poi?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "La vicinanza \u00E8 solo un\u0027impressione; immaginatemi lontano. Come sarei felice, signorina, se potessi stringervi tra le mie braccia..."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "No, questo poi \u00E8 troppo... Che sfacciataggine!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Perdonatemi, signorina: l\u0027ho fatto per amore, solo per amore."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Voi mi considerate solo una provinciale... "
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Per amore, davvero, per amore. Volevo solo scherzare, Maria, non vi arrabbiate. Sono pronto a chiedervi perdono in ginocchio. Perdonatemi, guardatemi, sono in ginocchio."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ah, che sorpresa!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Al diavolo..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Cosa significa, signorina, che modo \u00E8 di comportarsi?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Io, mammina..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Vattene immediatamente! Hai sentito, via, via! E non osare comparirmi davanti agli occhi. Scusatemi, io sono cos\u00EC confusa..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Lo vedete da voi, signora: io ardo d\u0027amore."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Voi in ginocchio! Dio mio, alzatevi, il pavimento \u00E8 tutt\u0027altro che pulito!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "No, in ginocchio. Ed \u00E8 in ginocchio che voglio sapere quale sar\u00E0 il mio destino: vita o morte."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Perdonatemi, io non comprendo bene il significato delle vostre parole. Se non sbaglio, voi mi dichiarate il vostro amore per mia figlia."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma se \u00E8 per voi che mi struggo, se \u00E8 per voi che la mia vita si trova appesa a un filo! Se non coronerete il mio amore imperituro, ebbene, allora non sono degno di continuare a vivere su questa terra. Col petto in fiamme chiedo la vostra mano."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma, permettetemi di farvi notare: io in un certo senso... sono sposata."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Cosa importa. L\u0027amore non conosce distinzioni: anche Karamzin ha detto: \u00ABLe leggi condannano\u00BB. Ce ne andremo all\u0027ombra dei ruscelli. La vostra mano, chiedo la vostra mano."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Mammina, il paparino ha detto che voi... Ah, cosa vedo!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E tu cosa fai qui? Cosa vuoi? Sono questi i modi? Tutto a un tratto, ecco che entra come un\u0027ossessa! Ma cosa c\u2019\u00E8 di tanto sbalorditivo! Cosa ti salta in testa? Una bambina di tre anni! Non so quando comincerai ad avere un po\u0027 pi\u00F9 di senno, e ad agire da ragazza educata. E quando capirai una buona volta cosa significa avere saldi principi e un contegno dignitoso!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Io davvero, mammina, non sapevo..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Sempre con la testa tra le nuvole, lei... Guarda le figlie del giudice Chapkin, loro s\u00EC. Cos\u0027hai poi da guardarle, non le devi guardare. Hai degli altri esempi davanti: guarda tua madre piuttosto. Ecco l\u0027esempio che dovresti seguire!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Anna, non ostacolate la nostra felicit\u00E0, e benedicete un amore fedele!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Allora era lei..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Decidete: vita o morte?"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E allora lo vedi, stupida, lo vedi che era per te, brutta carogna, che il nostro ospite si era compiaciuto di mettersi in ginocchio; e tu a correre dentro come una pazza! Meriteresti che dicessi di no apposta: tu non sei degna di una simile fortuna."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Non lo far\u00F2 pi\u00F9, mammina; davvero: non lo far\u00F2 mai pi\u00F9."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Vostra eccellenza! Non mi rovinate! Non mi rovinate!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Che vi prende?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Le guardie si sono lamentati con vostra eccellenza. Vi do la mia parola d\u0027onore che non \u00E8 vera nemmeno la met\u00E0 di quello che dicono. Sono loro che ingannano e imbrogliano la gente. \u00C8 una bugia, vi giuro, una bugia. Sono loro che mi chiedono di derubarli."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ma che vada al diavolo! Cosa volete che me ne importi!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non credeteci, non credeteci! Sono dei tali bugiardi... Nemmeno un bambino crederebbe a quello che dicono. Tutta la citt\u00E0 li conosce per le loro bugie. Sono i peggiori furfanti che si siano mai visti."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Sai che onore ci vuole fare? Ha chiesto la mano di nostra figlia."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma che cosa dici! \u00C8 impazzita, mia moglie! Non vi inquietate, vi prego, vostra eccellenza, \u00E8 un po\u0027 suonata, anche sua madre era cos\u00EC."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "\u00C8 vero. Ho proprio chiesto la sua mano. Ne sono innamorato."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Vostra eccellenza: non posso crederci."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma se \u00E8 lui a dirtelo!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Non sto affatto scherzando. Per amore potrei commettere qualunque follia."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non sono degno di un simile onore."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC, invece. Se non acconsentirete a concedermi la mano di Maria, far\u00F2 uno sproposito."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non posso crederci, vostra eccellenza ha voluto scherzare."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Vi prego: avete davanti a voi un uomo disperato e deciso a tutto. Se mi sparo una fucilata, vi metteranno sotto processo."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah, Dio, Dio! Ma lo giuro, non ne ho colpa n\u00E9 nel corpo n\u00E9 nell\u0027anima. Vi prego, non inquietatevi! Vogliate fare come aggrada a vostra grazia! Adesso, veramente, ho la testa cos\u00EC... non so nemmeno io cosa mi succede. Sono diventato cos\u00EC stupido, come non ero mai stato."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Allora forza, benedicili! Chlestakov si avvicina con Maria."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Che Dio vi benedica, io non ho colpe. Chlestakov scambia un bacio con Maria."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Che diavolo... ma... \u00C8 proprio vero! Si baciano. Ah, santi del Paradiso, si baciano! Si \u00E8 proprio fidanzato! Ah, Anton, Anton! Ah, sindaco! Guarda tu stesso com\u0027\u00E8 andata a finire!"
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "I cavalli sono pronti."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ah, bene!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Come, signore, volete partire?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC, devo partire."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma se, cio\u00E8... Voi stesso avete avuto la compiacenza di accennare, se non mi sbaglio, a un matrimonio..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Solo per un minuto... Faccio un salto da mio zio, un vecchio molto ricco, e domani stesso sar\u00F2 di ritorno."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Non osiamo cercare di trattenervi, nella speranza di un felice ritorno..."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Come no, , torner\u00F2 in un lampo. Addio, amor mio! Ma che amor mio, odd\u00ECo che figura... Ah, ecco! Addio, anima mia!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Sicuro che non vi serva niente per il viaggio? Mi pareva che aveste bisogno di soldi."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Oh, no, perch\u00E9 mai? Ma del resto, se vi fa piacere..."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Di quanto avete bisogno?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Ieri vostro padre mi ha dato duecento marchi, cio\u00E8 non duecento, ma quattrocento - non voglio approfittare del vostro errore - e dunque ora datemene altrettanti, di modo che facciano ottocento giusti giusti. E io non parli delle vostre tirannie."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Subito! Oltretutto, quando si dice la combinazione, sono banconote nuove di zecca!"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "S\u00EC. \u00C8 una bella cosa. Si dice infatti che quando ti capitano delle banconote nuove devi attenderti un nuovo colpo di fortuna."
+  },
+  {
+    "Personaggio": "OSIP",
+    "Testo": "Parole sante."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "A presto, caro Sindaco! E grazie infinite per la vostra ospitalit\u00E0: in fede mia, non ho mai ricevuto una simile accoglienza. A presto, Maria, anima mia."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "A presto, angelo della mia anima."
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Arrivederci, mammina!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Quando ci \u00E8 comandato di attendervi?"
+  },
+  {
+    "Personaggio": "CHLESTAKOV",
+    "Testo": "Domani o dopodomani."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E allora, Anna? Di\u0027 la verit\u00E0. L\u0027avresti mai immaginato? Per la miseria! Questo s\u00EC, che \u00E8 un colpo di fortuna. Su, sii sincera: non te lo saresti nemmeno sognato. Chi eri? nient\u0027altro che una sindachessa. E tutto a un tratto, fuih!, guarda con che diavolo ti sei imparentata!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Tz\u00E8, io lo sapevo gi\u00E0 da tempo. \u00C8 una novit\u00E0 per te, che sei un buzzurro: tu la gente come si deve non l\u0027hai mai vista."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma come, io non sarei una persona come si deve? Comunque, adesso, pensa un po\u0027, Anna, che persone importanti siamo diventate! Eh, Anna? Gente di rango, che il diavolo se li pigli tutti quanti! Aspetta, aspetta un po\u0027, gliela dar\u00F2 io una lezioncina a tutte quelle teste calde, con le loro denunce e le loro suppliche. Ehi, chi c\u0027\u00E8 l\u00EC? Ah, sei tu, Jean Dupont, fammi un piacere, chiamami qua il Commissario. Adesso le sistemo io, quelle canaglie!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Fa bene signore! Si sono lamentate di lei tutto il tempo!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Finora gli ho fatto solo i baffi, adesso passiamo alla barba!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Le faccio un elenco lungo cos\u00EC, le scrivo i nomi di tutti quelli che si lamentano di lei, soprattutto di quegli imbrattacarte che sprecano la loro carta per presentare istanza di sollevamento per lei, sindaco."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E annuncia a tutti, perch\u00E9 sappiano quale onore Dio ha concesso al loro sindaco, che egli d\u00E0 sua figlia non a un mortale qualunque, ma a uno come al mondo non se ne erano ancora visti, uno che pu\u00F2 fare e disfare tutto quel che vuole, tutto, tutto! A tutti dillo!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Che lo sappiano!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Gridalo alla gente"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Salgo sul campanile, accidenti! Perch\u00E9 se festa \u00E8, che festa sia!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E allora, Anna? Cosa faremo, adesso, dove vivremo?"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma scherziamo? A Capitale! Come potremmo rimanere qui!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Dunque: se Capitale deve essere, che Capitale sia! Che se ne vada al diavolo anche la carica di sindaco. Che dici, eh, Anna?"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Naturalmente. Che ci importa!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Eh s\u00EC. Adesso potr\u00F2 fare carriera sul serio. Potrebbe ottenermi tali promozioni che col tempo, magari, chiss\u00E0: divento generale. Tu che ne dici, Anna: potrei diventare generale?"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Perbacco! Naturale che potresti."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah, accidenti, sai che bello essere generale! Ti mettono a tracolla una fascia da cavaliere. Qual \u00E8 la migliore, Anna? Quella rossa o quella azzurra?"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Azzurra. Naturalmente."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Come, come? Ma senti tu cosa vorrebbe! Anche quella rossa va benone. Ma lo vuoi sapere, tu, perch\u00E9 mi piacerebbe essere generale? Perch\u00E9 se ti capita di dover andare da qualche parte, i corrieri e gli attendenti ti corrono sempre davanti, gridando: i cavalli!, e cos\u00EC alle stazioni di posta non li danno pi\u00F9 a nessuno, e tutti a fare la lista d\u0027attesa: consiglieri titolari, capitani, sindaci, mentre tu? Pranzo a casa del governatore. E il sindaco? Ah, \u00E8 l\u00E0 che aspetta? Bene: che aspetti! Eh, eh, eh! Ecco cos\u0027\u00E8 che mi alletta, per la miseria!"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "A te piacciono sempre queste cose cos\u00EC ordinarie, padre. Ma ricordati che adesso dovremo cambiare completamente vita, e i tuoi conoscenti non potranno essere pi\u00F9 un giudice cinofilo con la passione per la caccia di lepri, o una sovrintendente alle opere pie delle mie pantofole; da adesso i tuoi conoscenti apparterranno a un ambiente esclusivo: conti e altra gente del gran mondo..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Tua figlia ha ragione, anzi, se devo essere sincera, la cosa mi fa un po\u0027 paura: qualche volta te ne esci con certe paroline che nella buona societ\u00E0 non ho mai sentito."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "E quindi? Le parole non fanno mica male."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Finch\u00E9 sei sindaco di una piccola cittadina di merda, ma laggi\u00F9 la vita \u00E8 completamente diversa. Io, sappilo, non considero nemmeno l\u0027ipotesi che la nostra casa non sia la prima della Capitale, intesi?"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Giusto! E io voglio che nella mia camera ci sia un tale profumo da non poterci entrare, se non socchiudendo gli occhi, cos\u00EC. Dio, che bellezza!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah, carissimo! Salve!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Salve sindaco!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Allora, piccioncino, come stai? Come va la vigilanza? Che cosa hai, maledetto perdigiorno, eh? Di cosa ti lamenti? Impostore, canaglia ladro di galline! Ti lamenti! Cosa c\u0027\u00E8? Ho preteso troppo da lor signori? Ecco, ti sei detto: finalmente lo sbatter\u00E0 in prigione qualcun altro! Che sette diavoli e una strega ti si attacchino ai denti, che..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Per l\u0027amor del cielo, Anton, che parole dici!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non \u00E8 questo il momento di preoccuparsi delle parole! La volete sapere una cosa? Quel funzionario davanti al quale sei andato a lamentarvi, adesso si sposa con mia figlia. E allora? Eh? Cosa ne dite? Adesso ti sistemo io! Ah! Brutto imbroglione... E spinge anche avanti la pancia: \u00E8 lo stato, lui, non si tocca; noi, fa, non siamo da meno neppure dei nobili. S\u00EC, bel nobile... faccia da porco! Il nobile impara le scienze, e anche se a scuola lo frustano, \u00E8 per il suo bene, perch\u00E9 impari quello che gli serve. E tu, invece? Tu incominci con gli imbrogli, e se il padrone, cio\u00E8 io, ti picchia \u00E8 solo perch\u00E9 non imbrogli bene. Ti basta una divisa e gi\u00E0 cominci a riempirti un po\u0027 le tasche, subito metti su una cresta cos\u00EC! Pfui, sai che bellezza! Con la tua divisa ti credi tanto importante? Ma io, sulla tua bella cresta e sulla tua superbia, ci sputo sopra!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Mi perdoni, Anton Antonovi\u00E8!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Vi siete lamentati, eh? E chi ti ha aiutato a truffare quando hai inserito nell\u2019arma tutta la tua famiglia? Ti ho aiutato io, capra malata! Ma tu te lo sei dimenticato! Se ti avessi denunciato avrei potuto spedirti dritto in Siberia. Cosa dici, adesso, eh?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Sono colpevole davanti a Dio, Anton Antonovi\u00E8. \u00C8 stato il maligno a tentarmi. Non ci lamenteremo mai pi\u00F9. Vi daremo in risarcimento tutto quello che volete, non vi adirate!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non ti adirare! Adesso ti getti ai miei piedi, eh? Perch\u00E9? Perch\u00E9 ho vinto, solo per questo. Ma se la fortuna tornasse a girare anche solo un pochino dalla vostra parte, voi, canaglie, mi calpestereste nel fango e poi mi schiaccereste dall\u0027alto con una trave."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Non rovinatemi, Anton Antonovi\u00E8!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non rovinarmi! Sentili! E prima? Vi... vi... Va bene, che Dio vi perdoni! Basta! Io non sono vendicativo: solo, da adesso, occhi aperti! Mia figlia non va sposa a un nobile qualsiasi. Che le congratulazioni siano... intesi? Non penserete di cavarvela con un filetto di pesce o un pan di zucchero... Beh, andate con Dio. Sven se ne va."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Anton! Devo credere a quello che dicono? Che straordinaria fortuna vi \u00E8 capitata!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ho l\u0027onore di porgervi le mie congratulazioni: un caso davvero incredibile. Quando ho sentito la notizia. Anna! Maria!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Anton, mi congratulo, e che Iddio conceda lunga vita a voi e ai giovani sposi, e vi dia una numerosa discendenza, nipoti e pronipoti! Anna! Maria! Ho l\u0027onore di porgervi le mie congratulazioni. Sarete felicissima, porterete vestiti d\u0027oro, gusterete le minestre pi\u00F9 raffinate e trascorrerete il vostro tempo tra mille divertimenti."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Ho l\u0027onore di porgervi le mie congratulazioni, Anton! Anna! Maria! Auguri per il lieto evento!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Maria, ho l\u0027onore di porgervi le mie congratulazioni! Che Dio vi conceda ogni ricchezza, monete d\u0027oro e un bambino piccolo cos\u00EC , da tenere sul palmo della mano. Proprio cos\u00EC: e continuer\u00E0 a gridare: uah, uah, uah!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Sapeste che gioia ho provato! Mi fanno: sai, Anna sposa sua figlia. Ah, Dio mio!, mi sono detto, e ho provato una gioia cos\u00EC grande che vado da mia moglie e gli faccio: ah, Brunilde, Anna aspettava proprio un buon partito per sua figlia, e vedi adesso come ha voluto il destino: \u00E8 successo proprio quello che desiderava, e davvero ero cos\u00EC felice che non riuscivo nemmeno a parlare. Piangevo, piangevo, singhiozzavo addirittura. Tanto che Brunilde mi fa: Lukasz Meyer, perch\u00E9 piangi? ah Brunilde, faccio, non lo so nemmeno io, so soltanto che qui le lacrime mi escono a fiumi."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Mi pregio di porgervi anche io le mie congratulazioni, vostra eccellenza, e di augurarvi una duratura prosperit\u00E0."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Grazie, grazie! Vi chiedo di sedervi, signori!"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Ma diteci, vi prego, Sindaco, tutto questo come ha avuto inizio? Vogliamo conoscere tutta la storia, passo dopo passo."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Una cosa straordinaria: la proposta ha avuto la compiacenza di farla lui stesso, di persona."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "E nel modo pi\u00F9 gentile e raffinato possibile. Ha avuto parole straordinarie: \u00ABAnna\u00BB ha detto, \u00ABio, mosso solo dal rispetto per le vostre qualit\u00E0...\u00BB. Un uomo stupendo, di grade educazione e dei pi\u00F9 nobili principi. \u00ABLa mia vita, credetemi, Anna, \u2026"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "e MARIA \u201C\u2026non vale un centesimo per me; io esisto solo per rispettare le vostre rare qualit\u00E0\u00BB. e"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "\u201C\u2026non vale un centesimo per me; io esisto solo per rispettare le vostre rare qualit\u00E0\u00BB."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Ma, mammina! Queste cose le ha dette a me!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Piantala! Tu non sai niente, e non ti immischiare in cose che non ti riguardano! E si \u00E8 profuso in parole cos\u00EC galanti... e quando ho cominciato a dire che noi non potevamo in nessun modo sperare in un simile onore \u2026"
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "\u2026si \u00E8 gettato improvvisamente in ginocchio e nel modo pi\u00F9 nobile e ha detto:"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "\u00ABAnna! Non fate di me un infelice! \u2026."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "\u201CMaria, acconsentite a ricambiare i miei sentimenti, o porr\u00F2 fine alla mia vita con la morte!\u00BB. A me le ha dette, mammina, a me ha detto cos\u00EC!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Certo, certo... parlava anche di te, non lo nego affatto."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Io mi sono addirittura spaventata; diceva che si sarebbe sparato. Mi sparo, diceva, mi sparo."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Che fatti incredibili!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "\u00C8 proprio vero: il destino aveva deciso cos\u00EC."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ma che destino e destino! I meriti: sono stati i meriti!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "A questi maiali la fortuna finisce sempre in bocca."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Magari, Sindaco, potrei vendervi quel cane... sa, quello di cui avevamo parlato..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Adesso non ho tempo per i vostri cani."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Se non vi aggrada possiamo accordarci per un altro cane."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Ma dove si trova adesso, permettetemi di chiedere, l\u0027illustre ospite?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "S\u00EC, si \u00E8 allontanato per un giorno per un\u0027incombenza molto importante."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "\u00C8 andato da suo zio, a chiedergli la sua benedizione."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Proprio: a chiedere la benedizione, ma domani stesso... Mille grazie! Domani stesso sar\u00E0 di ritorno..."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Salute, vostra eccellenza!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Cento di questi anni e una baracca di soldi!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Che il Signori vi allunghi la vita di settanta volte sette anni!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Crepa!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Che il diavolo ti porti!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Vi ringrazio infinitamente! E vi auguro altrettanto. Jean Dupont, andate a preparare i festeggiamenti: che i mercanti mettano a disposizione quanto c\u2019\u00E8 di meglio! Ah, quanto mi mancher\u00E0 questa bella tradizione\u2026 Ufficiale postale esce di corsa."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Adesso \u00E8 nostra intenzione andare a vivere a Capitale. Qui, devo dire, c\u0027\u00E8 un\u0027aria... un po\u0027 troppo provinciale."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "S\u00EC, e la cosa, devo dire, non \u00E8 affatto piacevole!"
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "D\u0027altronde, anche mio marito... l\u00E0 lo faranno generale."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "S\u00EC, signori, lo ammetto, io, accidenti, desidero molto essere generale."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "E che Dio vi conceda di diventarlo."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Ci\u00F2 che \u00E8 impossibile all\u0027uomo, \u00E8 possibile a Dio."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "A grande nave grande rotta."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Onore al merito."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Sarebbe proprio un bello scherzo se lo facessero sul serio generale! Il grado di generale gli calza come una sella a una mucca! Beh, fratello, ne devi mangiare ancora, di pappa! Qui c\u0027\u00E8 gente che \u00E8 molto meglio di te e non \u00E8 ancora generale"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ma sentilo, questo trombone, gi\u00E0 vuole diventare generale. E il peggio \u00E8 che magari ci riesce. Ha una tale boria che non lo vorrebbe neanche il diavolo. Dunque, Sindaco, non dimenticatevi di noi."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "E se ci capitasse qualcosa, non rifiutateci la vostra protezione."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "L\u0027anno venturo porter\u00F2 mio figlio in Capitale per metterlo al servizio dello stato, cos\u00EC, fatemi questa grazia, accordategli la vostra protezione, fate da padre a quell\u0027orfanello."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Da parte mia sono pronto, prontissimo a fare tutto il possibile."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Tu, Antoniuccio, sei sempre pronto a promettere. Tu non avrai tempo per pensare a tutto. E poi come potresti, e perch\u00E9 dovresti, prenderti simili impegni?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma perch\u00E9, anima mia, qualche volta si pu\u00F2."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Si pu\u00F2, naturalmente, ma non \u00E8 il caso di mettersi a proteggere ogni sorta di plebaglia."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Avete sentito come ci tratta?"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Cosa volete, \u00E8 sempre stata cos\u00EC: invita a tavola il contadino e ti si mette subito a capotavola..."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Signori! Una notizia incredibile! Il funzionario che abbiamo preso per l\u0027ispettore, non era l\u0027ispettore."
+  },
+  {
+    "Personaggio": "TUTTI",
+    "Testo": "Come non era l\u0027ispettore?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Non era affatto l\u0027ispettore: c\u0027\u00E8 scritto su questa lettera."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Cosa dite, cosa dite? Quale lettera?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Scritta da lui, di suo pugno. Mi portano una lettera alla posta. Guardo l\u0027indirizzo, vedo che \u00E8 indirizzata in via della Posta. Sono rimasto di sasso. Ah, ho pensato, certamente ha notato qualche irregolarit\u00E0 nel servizio postale e informa i superiori. L\u0027ho presa e l\u0027ho aperta."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Come vi siete permesso?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Non lo so nemmeno io: \u00E8 stata una forza soprannaturale a spingermi. Stavo gi\u00E0 per chiamare il corriere per spedirla con la staffetta, quando sono stato sopraffatto da una curiosit\u00E0 inaudita. Non posso, non posso, sento che non posso, mi attira, ah, come mi attira! da un orecchio sento una vocina: no, non aprirla, farai la fine di una gallina; ma nell\u0027altro \u00E8 come se ci fosse un diavolo che mi sussurra: aprila, aprila! Aprila! E mentre toglievo la ceralacca sentivo come un fuoco nelle vene, ma appena l\u0027ho aperta, un gelo, Dio mio, che gelo! Mi tremavano le mani, mi si confondeva tutto davanti agli occhi."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma come avete osate aprire la lettera di un personaggio cos\u00EC potente?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Questo \u00E8 il punto: non \u00E8 n\u00E9 potente n\u00E9 un personaggio."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "E cos\u0027\u00E8?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "N\u00E9 carne n\u00E9 pesce: lo sa il diavolo cos\u0027\u00E8."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Come osate? Io vi metto agli arresti..."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Chi, voi?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "S\u00EC, io."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Non mi sembrate abbastanza potente."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah, s\u00EC? Non avete capito allora chi si sposa con mia figlia, e che io stesso diventer\u00F2 generale, e che vi spedir\u00F2 dritto in Siberia?"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Andiamoci piano, sINDACO! In Siberia, ce n\u0027\u00E8, di qui alla Siberia! Ma \u00E8 meglio che vi legga qua."
+  },
+  {
+    "Personaggio": "TUTTI",
+    "Testo": "Leggete, leggete!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "\u00ABMi precipito a comunicarti, caro Trjapi\u00E8kin, che cose strabilianti mi stanno accadendo. In viaggio sono stato completamente ripulito da un capitano di fanteria, cos\u00EC che l\u0027oste stava gi\u00E0 per spedirmi in galera, quando tutto a un tratto grazie alla mia fisionomia da cittadino della capitale e al mio vestito tutta questo paesuncolo mi ha scambiato per chiss\u00E0 che generale governatore. E adesso me ne sto a casa del sindaco, me la godo e corteggio a pi\u00F9 non posso sua moglie e sua figlia; solo non ho ancora deciso da quale cominciare, penso che sar\u00E0 meglio partire dalla madre perch\u00E9 mi pare gi\u00E0 pronta a concedermi i suoi favori... \u00ABMio caro: adesso \u00E8 tutto un altro andare. Tutti mi danno denaro in prestito: qualsiasi somma. Che tipi stravaganti, chiss\u00E0 le risate che ti faresti. Tu che scrivi degli articoletti: dovresti inserirli tra le tue creazioni. Cominciamo dal sindaco: \u00E8 scemo come una capra...\u00BB."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Non \u00E8 possibile! Non c\u0027\u00E8 scritto cos\u00EC!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "\u00ABCome una capra\u00BB."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Impossibile. L\u0027avete scritto voi."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "E come avrei potuto scriverlo?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Leggete!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Leggete"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "\u00ABIl sindaco \u00E8 scemo come una capra...\u00BB."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ah, che il diavolo se lo porti! C\u0027\u00E8 bisogno anche di ripeterlo! Come se non bastasse!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Hm... hmm... hm... hm... \u00ABcapra. Anche l\u0027ufficiale Postale \u00E8 una brava persona...\u00BB. Beh, qui si esprime in modo poco conveniente anche su di me."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "No, adesso leggete!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Ma che bisogno c\u0027\u00E8?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "No, accidenti a voi: se leggere si deve, allora che si legga sul serio! Leggete tutto!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Permettete, legger\u00F2 io. \u00ABL\u0027ufficiale Postale non \u00E8 da meno; dev\u0027essere anche lui un mascalzone, e beve come una spugna \u00BB."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Piccolo farabutto! Una bella frustata ci vorrebbe, e basta!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "\u00ABLa sovrintendente alle opere pi... i... i... i...\u00BB."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Perch\u00E9 vi siete fermato?"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Non si riesce pi\u00F9 a leggere ben... del resto, si capisce benissimo che \u00E8 una canaglia."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Date qua! Leggere \u00E8 compito di un ispettore scolastico."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "No, questo passo si pu\u00F2 tralasciare, dopo \u00E8 pi\u00F9 chiaro."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "S\u00EC, certo, lo so io perch\u00E9."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Per leggere posso leggere anch\u0027io, pi\u00F9 avanti, davvero, si capisce tutto."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "No, leggete tutto! Prima noi abbiamo letto tutto."
+  },
+  {
+    "Personaggio": "TUTTI",
+    "Testo": "Dategli la lettera, Felipa Delgado! Dategliela! Leggete!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Subito. Ecco, se vi fa piacere... leggete da qui."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Leggete! Leggete! Tutte sciocchezze, leggete tutto!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "\u00ABQuanto alla sovrintendente alle opere pie, direi che \u00E8 un autentico maiale con la papalina\u00BB."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Non fa neanche ridere! Quando mai si \u00E8 visto un maiale con la papalina?"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "\u00ABIl provveditore scolastico puzza di cipolla da capo a piedi\u00BB. \u2026 Giuro davanti a Dio: mai messo in bocca una cipolla in vita mia."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Grazie a Dio, almeno su di me non c\u0027\u00E8 niente."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Dammi qua\u2026. \u00ABIl giudice...\u00BB"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Ecco, lo sapevo! Signori, ritengo che questa lettera sia anche troppo lunga. E poi non so che piacere ci troviate a leggere queste porcherie."
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "No!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "No, leggete!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "No, adesso leggete!"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u00ABIl giudice Chapkin, poi, \u00E8 il re del mauvais ton\u00BB... Dev\u0027essere una parola francese."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Lo sa il diavolo che cosa significa! Mi va anche bene se vuol dire imbroglione, ma non escludo che sia anche peggio."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "\u00ABDel resto \u00E8 gente ospitale e di buon cuore. A presto, caro amico. Voglio seguire anch\u0027io il tuo esempio e darmi alla letteratura. \u00C8 noioso, fratello, vivere cos\u00EC, sento che l\u0027anima anela a nuovo nutrimento. Credo sia giunto il momento di dedicarmi a qualche oggetto elevato.\u00BB."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Che legnate, signori!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Se voleva distruggermi, c\u0027\u00E8 riuscito! Mi ha ucciso, ucciso, letteralmente ucciso! Non vedo pi\u00F9 niente. Vedo dei musi di porco invece delle facce, e nient\u0027altro... Ah, ma ritorner\u00E0, ritorner\u00E0, deve ritornare!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Ma che ritornare! Neanche a farlo apposta ho ordinato di dargli la carrozza migliore; e sempre il diavolo mi ha ispirato l\u0027idea di dare lo stesso comando anche alle altre stazioni."
+  },
+  {
+    "Personaggio": "MARIA",
+    "Testo": "Uno scandalo. Questo \u00E8 uno scandalo senza precedenti! La mia reputazione andata\u2026"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Per\u00F2, diavolo, signori, mi ha chiesto in prestito trecento marchi!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Anche a me: trecento marchi."
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Ci sono anch\u2019io: trecento marchi."
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "A me sessantacinque marchi in banconote. Proprio cos\u00EC."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Come \u00E8 possibile, signori? Come abbiamo fatto a prendere un simile abbaglio?"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Come ho potuto? Come ho potuto, vecchio imbecille che sono! Rimbambito, ecco cosa sono. Maledetto d\u0027un caprone!... Sono trent\u0027anni che presto servizio: non un solo mercante n\u00E9 un solo appaltatore sono mai riusciti a farmela, ho ingannato imbroglioni di tutte le risme, e lestofanti e truffatori capaci di giocarsi il mondo intero; tre governatori ho imbrogliato!... Ma quali governatori! Non \u00E8 nemmeno il caso di parlare dei governatori..."
+  },
+  {
+    "Personaggio": "ANNA",
+    "Testo": "Ma non \u00E8 possibile, Antoniuccio: si \u00E8 fidanzato con Mariuccia nostra..."
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Si \u00E8 fidanzato! Col piffero che si \u00E8 fidanzato! E mi viene anche a parlare di fidanzamento! Guardate adesso, guardate tutti, tutto il mondo, tutta la cristianit\u00E0, guardate tutti come hanno gabbato il sindaco! Dategli dello scemo, s\u00EC, dello scemo, a quel vecchio mascalzone! Ehi, tu, nasone! Uno stupidotto, una pastafrolla, e tu l\u0027hai preso per chiss\u00E0 chi! L\u0027ispettore generale! E adesso \u00E8 l\u00E0 che divora la strada, sulla nostra carrozza! E questa storia andr\u00E0 in giro per il mondo: non solo diventerai lo zimbello di tutti, ma salter\u00E0 fuori uno scribacchino, un imbrattacarte che ti metter\u00E0 pure in una commedia. \u00C8 questo che mi offende di pi\u00F9: non avr\u00E0 rispetto n\u00E9 del grado, n\u00E9 dei titoli, e tutti rideranno e batteranno le mani. Cosa avete da ridere? \u00C8 di voi che ridete! Accidenti a voi! So io dove li manderei tutti questi intellettuali! Questi scribacchini, questi liberi pensatori delle mie calzette! Stirpe del demonio! Tutti in un sacco vi caccerei, poi vi macinerei come farina e poi via, all\u0027inferno! A prostituirvi laggi\u00F9! Ancora non riesco a riprendermi. \u00C8 proprio vero che, se Dio ti vuol castigare, per prima cosa ti annebbia il cervello. Ma cos\u0027aveva quel galletto da sembrare un ispettore generale? Eh? Proprio niente. Manco per i baffi gli assomigliava. E tutti a gridare: l\u0027ispettore generale! L\u0027ispettore generale! Ma chi \u00E8 stato il primo a sostenere che era l\u0027ispettore? Eh? Rispondetemi."
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ammazzatemi, se volete, ma come sia potuto accadere, io non lo so. \u00C8 come se mi avesse avvolto una nebbia. \u00C8 stato il diavolo a confonderci."
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "In ogni caso, se volete sapere chi \u00E8 stato a dirlo, ecco chi \u00E8 stato: questi due campioni del mondo!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Lo giuro, non sono stato io, nemmeno pensavo, lui piuttosto..."
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Io mai, ma proprio mai... \u00E8 colpa sua semmai"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Ma certo, siete stati voi!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Come no. Siete arrivati dalla locanda, correndo come due ossessi: \u00AB\u00C8 arrivato, \u00E8 arrivato e non paga...\u00BB. L\u0027hanno trovato, il grand\u0027uomo!"
+  },
+  {
+    "Personaggio": "SINDACO",
+    "Testo": "Ma voi, certo! I pettegoloni della citt\u00E0, bugiardi maledetti!"
+  },
+  {
+    "Personaggio": "SOVRINTENDENTE",
+    "Testo": "Andatevene al diavolo: voi, le vostre storie e i vostri ispettori!"
+  },
+  {
+    "Personaggio": "GIUDICE",
+    "Testo": "Continuate ad andare in giro a confondere la gente, chiacchieroni che non siete altro, e a spargere pettegolezzi, cornacchie spelacchiate!"
+  },
+  {
+    "Personaggio": "ISPETTORE SCOLASTICO",
+    "Testo": "Babbei!"
+  },
+  {
+    "Personaggio": "UFFICIALE POSTALE",
+    "Testo": "Nanetti con la pancia!"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Lo giuro davanti a Dio, non sono stato io\u2026"
+  },
+  {
+    "Personaggio": "SVEN",
+    "Testo": "Eh, no, siete stato voi il primo, eravamo insieme\u2026"
+  },
+  {
+    "Personaggio": "BOB\u00C8INSKIJ",
+    "Testo": "Assolutamente no: il primo siete stato voi. Ultima scena Suonano Gli stessi e un gendarme. GENDARME Un funzionario di Capitale, giunto per ordine del sovrano, chiede di vedervi immediatamente. \u00C8 alloggiato all\u0027albergo. Queste parole colpiscono tutti come un tuono. Un\u0027esclamazione di stupore sfugge contemporaneamente a tutte le signore; tutto il gruppo cambia improvvisamente posizione e rimane impietrito. Il sindaco \u00E8 in mezzo, dritto come un palo, con le braccia allargate e la testa gettata all\u0027indietro. Alla sua destra: sua moglie e sua figlia, protese verso di lui con tutto il corpo; poi Lukasz Meyer, con aria innocente e smarrita. Sulla sinistra del sindaco: Felipa Delgado, con la testa un po\u0027 chinata di lato, come se prestasse orecchio a qualcosa, poi il giudice Chapkin, con le braccia spalancate e quasi rannicchiato sul pavimento, che muove le labbra come se volesse fischiare o dire: \u00ABAdesso siamo proprio sistemati!\u00BB. Poi Sven, girato verso gli spettatori con gli occhi socchiusi e una smorfia caustica all\u0027indirizzo del sindaco; poi, al margine estremo della scena, Bob\u00E8inskij, con le braccia tese l\u0027uno verso l\u0027altro e le bocche spalancate, che si fissano con gli occhi sbarrati. Gli altri ospiti rimangono semplicemente impalati. Come impietrito, il gruppo rimane in questa posizione per quasi un minuto e mezzo. Cala il sipario. FINE"
+  },
+  {
+    "Personaggio": "GENDARME",
+    "Testo": "Un funzionario di Capitale, giunto per ordine del sovrano, chiede di vedervi immediatamente. \u00C8 alloggiato all\u0027albergo."
+  }
+]</div>
+  <form>
+	<button type="button" id="play">Play</button>
+	<button type="button" id="pause">Pause</button>
+	<button type="button" id="stop">Stop</button>
+  </form>
+
+  <script>
+  var synth = window.speechSynthesis;
+
+	var playEle = document.querySelector('#play');
+	var pauseEle = document.querySelector('#pause');
+	var stopEle = document.querySelector('#stop');
+	
+	playEle.addEventListener('click', onClickPlay);
+	pauseEle.addEventListener('click', onClickPause);
+	stopEle.addEventListener('click', onClickStop);
+	
+	function onClickPlay() {
+		
+		  if ( 'speechSynthesis' in window ) {
+			  if (synth.paused) { /* unpause/resume narration */
+				console.log("PAUSED");
+				//playEle.className = 'played';
+				//pauseEle.className = '';
+				synth.resume();
+			  } 
+			else {
+				let battute=document.getElementById('copione').textContent;
+				const personaggio = document.getElementById('personaggio').value;
+				var chkSilenzia = document.querySelector('input[name="silenzia"]:checked').value;
+				console.log(chkSilenzia);
+				var voices = synth.getVoices();
+				console.log(voices);
+				var obj = JSON.parse(battute);
+				console.log("Parsato JSON");
+				console.log(obj);
+				synth.cancel();
+				
+				for (var i=0;i<obj.length;i++) {
+					const battuta = new SpeechSynthesisUtterance(obj[i].Testo);
+					if (obj[i].Personaggio==='ANNA' || obj[i].Personaggio==='MARIA' || obj[i].Personaggio==='SOVRINTENDENTE') {
+						battuta.voice=synth.getVoices().filter(function(voice) { return voice.name == 'Microsoft Elsa - Italian (Italy)'; })[0];
+					}
+					else {
+						battuta.voice=synth.getVoices().filter(function(voice) { return voice.name == 'Microsoft Cosimo - Italian (Italy)'; })[0];
+					}
+					if (personaggio	=== obj[i].Personaggio && chkSilenzia === 'Si') {
+						battuta.volume=0;
+					}
+					synth.speak(battuta);
+				}				
+			}
+		  } else {
+			alert('not supported');
+		  }
+	}
+	
+	function onClickPause() {
+		if (synth.speaking && !synth.paused) { /* pause narration */
+			pauseEle.className = 'paused';
+			playEle.className = '';
+			synth.pause();
+		}
+	}
+	
+	function onClickStop() {
+            if (synth.speaking) { /* stop narration */
+                /* for safari */
+                stopEle.className = 'stopped';
+                playEle.className = pauseEle.className = '';
+                //flag = false;
+                synth.cancel();
+
+            }
+        }
+  </script>
+</body>
+</html>
